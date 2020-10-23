@@ -1,7 +1,7 @@
 export default function SearchIcon () {
   return (
     <>
-      <svg className='w-8 h-8 fill-current text-white' width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+      <svg className='fill-current text-white' width="1.5rem" height="1.5rem" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
           <title>search</title>
           <desc>Created with Sketch.</desc>
           <g id="Icons" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">

@@ -22,9 +22,21 @@ a {
   grid-template-rows: 1fr;
 }
 
+header button:active {
+  background-color: #81e6d9;
+  transition: background-color 0.1s ease;
+}
+
+footer button:active {
+  background-color: #2d3748;
+  transition: background-color 0.1s ease;
+}
+
 @media screen and (min-width: 1024px) {
-  #__next {
-    width: 64rem;
-    margin: auto;
+  #__next main, .header-nav, .footer-buttons {
+    width: 64rem !important;
+    padding: 0 1rem;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }

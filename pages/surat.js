@@ -1,8 +1,18 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { getSurahList } from '../api/api';
+import { getSurahList} from '../api/data-sources';
 import Layout from '../components/layout';
-import { customButtonTeal, customButtonBlue, customButtonBorderTeal } from '../components/button';
+import { customButtonBorderTeal } from '../components/button';
+
+export async function getStaticProps() {
+  const surahList = await getSurahList();
+
+  return {
+    props: {
+      surahList
+    }
+  }
+}
 
 export default function DaftarSurat({ surahList }) {
   return (
@@ -12,22 +22,22 @@ export default function DaftarSurat({ surahList }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout pageTitle='Daftar Surat'>
-        <main style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }} className='my-20'>
-          <Link href='/'>
-            <button className={`${customButtonBlue} mx-auto mb-5`}>
-              <span className='text-xl mt-1'>&crarr;</span>
-              <span>kembali ke beranda</span>
-            </button>
-          </Link>
+      <Layout pageTitle='QuranKu | Daftar Surat'>
+        <main style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }} className='my-16'>
           <ul className='w-full flex flex-col items-center'>
             {
               surahList.map((surah) => (
-                <li className='w-full' key={surah.name} >
-                  <Link href={`/surat/${surah.number_of_surah}`}>
+                <li className='w-full' key={surah.nama} >
+                  <Link href={`/surat/${surah.nomor}`}>
                   <button className={customButtonBorderTeal}>
-                    <span>{surah.number_of_surah}</span>
-                    <span>{surah.name}</span>
+                    <div className='flex items-center justify-between'>
+                      <span className='mr-5 h-8 w-8 text-xs font-normal leading-none bg-blue-200 text-gray-700 flex justify-center items-center rounded-full'>{surah.nomor}</span>
+                      <div className='flex flex-col'>
+                        <span className='text-left'>{surah.nama}</span>
+                        <span className='text-left text-gray-700 font-light'>{surah.arti}</span>
+                      </div>
+                    </div>
+                    <span className='font-normal text-2xl'>{surah.asma}</span>
                   </button>
                   </Link>
                 </li>
@@ -39,14 +49,4 @@ export default function DaftarSurat({ surahList }) {
 
     </>
   )
-}
-
-export async function getStaticProps() {
-  const surahList = await getSurahList();
-
-  return {
-    props: {
-      surahList
-    }
-  }
 }

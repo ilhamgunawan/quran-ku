@@ -4,8 +4,7 @@ import Layout from '../components/layout';
 import { customButtonTeal } from '../components/button';
 import MosqueLogo from '../assets/icons/nabawi-mosque';
 
-export default function Home({}) {
-
+export default function Home() {
   return (
     <>
       <Head>
@@ -13,7 +12,7 @@ export default function Home({}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout pageTitle='Beranda'>
+      <Layout pageTitle='QuranKu | Beranda'>
         <main style={{ width: '95%', margin: 'auto' }} className='flex flex-col justify-center items-center'>
           <div>
             <MosqueLogo />

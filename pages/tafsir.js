@@ -1,26 +1,23 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import Layout from '../components/layout';
 
 export default function Tafsir({}) {
 
   return (
-    <div>
+    <>
       <Head>
-        <title>Baca Tafsir | My Quran</title>
+        <title>Tafsir | QuranKu</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <h1>My Quran / Tafsir</h1>
-        <Link href='/'>
-          <a>&crarr; kembali ke beranda</a>
-        </Link>
-      </header>
-
-      <main>
-        
-      </main>
-
-    </div>
+      <Layout pageTitle='QuranKu | Tafsir'>
+        <main style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }} className='my-16 flex flex-col justify-center items-center'>
+          <div className='flex flex-col items-center justify-center'>
+            <p className='text-xl text-center'>Terima kasih telah menggunakan QuranKu</p>
+            <p className='text-xl text-center'>Halaman ini dalam tahap pengambangan</p>
+          </div>
+        </main>
+      </Layout>
+    </>
   )
 }
