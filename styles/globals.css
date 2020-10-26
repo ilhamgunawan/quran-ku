@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "fontArab";
+  src: url("/fonts/LPMQ.ttf");
+}
+
 html,
 body {
   padding: 0;
@@ -30,6 +35,21 @@ header button:active {
 footer button:active {
   background-color: #2d3748;
   transition: background-color 0.1s ease;
+}
+
+.arabic-text {
+  font-family: 'fontArab';
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 3;
+  color: #212529
+}
+
+.anchor {
+  display: block;
+  height: 90px;
+  margin-top: -90px;
+  visibility: hidden;
 }
 
 @media screen and (min-width: 1024px) {

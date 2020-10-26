@@ -1,57 +1,88 @@
-import Head from 'next/head'
-import Layout from '../../components/layout'
-import { getArabicNumber } from '../../utils/utils';
-import { getSurah } from '../../api/data-sources';
+import Head from 'next/head';
+import { useEffect, useContext, useState } from 'react';
 
-export async function getStaticProps() {
-  const surah = await getSurah(114);
+import { getArabicNumber, mapAyatObjectToArray, getAyatNumberList } from '../../utils/utils';
+import { getSurah } from '../../data-sources/data-sources';
+import { Context } from '../../state/store';
+import { setCurrentMurottal, murottalAudioToggle, setCurrentAyatNumberList } from '../../state/actions';
 
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
+import AyatListItem from '../../components/ayat-list/ayat-list-item';
+
+export const getStaticProps = async () => {
+  const surahDetails = await getSurah('114');
   return {
     props: {
-      surah
+      newSurah: surahDetails,
     }
-  }
-}
+  };
+};
 
-export default function Surat({ surah }) {
+const AnNaas = ({ newSurah }) => {
+  const { text, translations } = newSurah;
+
+  const [state, dispatch] = useContext(Context);
+  const { currentMurottal, isMurottalPlaying } = state;
+  
+  const [surah, setSurah] = useState({
+    versesArray: mapAyatObjectToArray(text, translations.id.text),
+  });
+
+  const { versesArray } = surah;
+
+  const setAyatList = () => {
+    dispatch(setCurrentAyatNumberList(getAyatNumberList(versesArray)));
+  };
+
+  const dispatchCurrentMurottal = async () => {
+    if (isMurottalPlaying === true) {
+      dispatch(murottalAudioToggle());
+    }
+    dispatch(setCurrentMurottal('https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/114.mp3'));
+  };
+  
+  useEffect(() => {
+    dispatchCurrentMurottal();
+    setAyatList();
+  }, []);
+
   return (
     <>
       <Head>
-        <title>An Naas | QuranKu</title>
+        <title>Quran Surat An-Naas | QuranKu</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link
+            rel="preload"
+            href="/fonts/LPMQ.ttf"
+            as="font"
+            crossOrigin=""
+          />
       </Head>
 
-      <Layout pageTitle='An Naas | 6 ayat' previousId='113' nextId={null} previousName='Al Falaq' nextName={null}>
+      <Header pageTitle='An-Naas | 6 ayat' />
         <main style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }} className='my-16'>
-          <section>
-            <ol>
-              <li className='mb-5 border-b pb-3'>
-                <div className='flex flex-col'>
-                  <div className='grid'>
-                    <p className='col-start-2 ml-auto mr-0 text-4xl text-right'>بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-                  </div>
-                  <p className='mt-3 text-gray-700 leading-relaxed'>Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.</p>
+          <ul>
+            <li className='mb-5 border-b pb-3'>
+              <div className='flex flex-col'>
+                <div className='grid'>
+                  <p className='arabic-text col-start-2 ml-auto mr-0 text-right'>بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
                 </div>
-              </li>
-              {
-                surah.map((ayat) => {
-                  return (
-                    <li key={ayat.nomor} className='mb-5 border-b pb-3'>
-                      <div className='flex flex-col'>
-                        <div className='grid'>
-                          <p className='col-start-1 h-8 w-8 mt-auto mb-2 text-2xl leading-none bg-blue-200 text-gray-700 flex justify-center items-center rounded-full'>{getArabicNumber(ayat.nomor)}</p>
-                          <p className='col-start-2 ml-auto mr-0 text-4xl text-right'>{(ayat.ar).replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', '')}</p>
-                        </div>
-                        <p className='mt-3 text-gray-700 leading-relaxed'>{ayat.id}</p>
-                      </div>
-                    </li>
-                  )
-                })
-              }
-            </ol>
-          </section>
+                <p className='mt-10 text-gray-700 leading-relaxed text-justify'>Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.</p>
+              </div>
+            </li>
+            {versesArray.map((ayat) => <AyatListItem key={ayat.ayatNumber} {...ayat} /> )}
+          </ul>
+          <audio id="audio-murottal" src={currentMurottal} loop={true} />
         </main>
-      </Layout>
-
+      <Footer
+        previousId='113' 
+        nextId={null} 
+        previousName='Al Falaq' 
+        nextName={null}
+      />
     </>
-  )
-}
+  );
+};
+
+export default AnNaas;
