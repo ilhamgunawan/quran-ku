@@ -70,6 +70,16 @@ export const mapAyatObjectToArray = (arabic, translations) => {
     });
 };
 
+export const mapTafsirObjectToArray = (tafsirObject) => {
+  return Object.entries(tafsirObject)
+    .map((text, index) => {
+      return {
+        ayatNumber: text[0],
+        tafsirText: text[1],
+      };
+    });
+};
+
 export const getAyatNumberList = (versesArray) => {
   return versesArray.map(({ ayatNumber }) => {
     return { ayatNumber: ayatNumber };

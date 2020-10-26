@@ -2,10 +2,10 @@ import Link from 'next/link';
 
 import { customButtonBorderTeal } from '../button';
 
-const SurahListItem = ({ nama, nomor, arti, asma }) => {
+const TafsirListItem = ({ nama, nomor, arti, asma }) => {
   return (
     <li className='w-full'>
-      <Link href={`/surat/${nomor}`}>
+      <Link href={`/tafsir/${nomor}`}>
       <button className={customButtonBorderTeal}>
         <div className='flex items-center justify-between'>
           <span className='mr-5 h-8 w-8 text-xs font-semibold leading-none bg-blue-300 text-white flex justify-center items-center rounded-full'>{nomor}</span>
@@ -21,4 +21,4 @@ const SurahListItem = ({ nama, nomor, arti, asma }) => {
   );
 };
 
-export default SurahListItem;
+export default TafsirListItem;

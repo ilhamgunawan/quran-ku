@@ -15,12 +15,20 @@ export const getSurah = async (surahId) => {
   return surahDetails[surahId];
 };
 
+export const getTafsir = async (surahId) => {
+  const surah = await getSurah(surahId);
+  return {
+    name: surah.name_latin,
+    tafsir: surah.tafsir.id.kemenag.text,
+    source: `${surah.tafsir.id.kemenag.source} (${surah.tafsir.id.kemenag.name})`,
+  };
+};
+
 export const getMurottalUrl = async (surahId) => {
   const response = await fetch(`https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/${surahId}.json`);
   const murottallUrl = (await response.json()).recitations[0].audio_url;
   return murottallUrl;
 };
-
 
 export const getAllSurahId = async () => {
   const surahList = await getSurahList();
@@ -37,11 +45,23 @@ export const getAllSurahId = async () => {
   });
 };
 
+export const getAllSurahIdUnfiltered = async () => {
+  const surahList = await getSurahList();
+
+  return surahList.map((surah) => {
+    return {
+      params: {
+        id: surah.nomor,
+      }
+    };
+  });
+};
+
 export const getSurahNameAndAyat = async (surahId) => {
   const surahList = await getSurahList();
 
   return {
-    nextName: surahList[surahId].nama,
-    previousName: surahList[surahId - 2].nama,
+    nextName: surahList[surahId] ? surahList[surahId].nama : null,
+    previousName: surahList[surahId - 2] ? surahList[surahId - 2].nama : null,
   };
 };

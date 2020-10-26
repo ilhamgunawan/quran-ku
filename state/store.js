@@ -3,6 +3,7 @@ import reducer from './reducer';
 
 const INITIAL_STATE = {
   surahList: [],
+  tafsirList: [],
   currentMurottal: '',
   currentAyatNumberList: [],
   isDaftarAyatShow: false,
