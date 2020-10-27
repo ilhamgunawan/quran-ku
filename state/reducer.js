@@ -42,6 +42,11 @@ const reducer = (state, action) => {
         ...state,
         currentPlaySurahData: action.payload,
       };
+    case ACTION_TYPES.TOGGLE_NAV:
+      return {
+        ...state,
+        isNavOpen: !state.isNavOpen,
+      };
     default:
       return state;
   }

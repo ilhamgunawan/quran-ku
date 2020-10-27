@@ -35,3 +35,7 @@ export const setCurrentPlaySurahData = (data) => ({
   type: ACTION_TYPES.SET_CURRENT_PLAY_SURAH_DATA,
   payload: data,
 });
+
+export const toggleNav = () => ({
+  type: ACTION_TYPES.TOGGLE_NAV,
+});

@@ -13,6 +13,7 @@ const INITIAL_STATE = {
   isDaftarAyatShow: false,
   isLoading: true,
   isMurottalPlaying: false,
+  isNavOpen: false,
   error: null,
 };
 
