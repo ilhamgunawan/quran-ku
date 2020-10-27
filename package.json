@@ -11,6 +11,7 @@
     "next": "9.5.5",
     "postcss-cli": "^8.1.0",
     "react": "17.0.0",
+    "react-audio-player": "^0.14.0",
     "react-dom": "17.0.0",
     "react-loader-spinner": "^3.1.14",
     "tailwindcss": "^1.9.5"

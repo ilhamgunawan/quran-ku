@@ -5,6 +5,10 @@ const INITIAL_STATE = {
   surahList: [],
   tafsirList: [],
   currentMurottal: '',
+  currentPlaySurahData: {
+    surah: '',
+    reciter: '',
+  },
   currentAyatNumberList: [],
   isDaftarAyatShow: false,
   isLoading: true,

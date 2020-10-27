@@ -1,7 +1,10 @@
 import Head from 'next/head';
-import Header from '../components/header/header';
 
-export default function Murottal({}) {
+import Header from '../components/header/header';
+import FooterPlayer from '../components/footer/footer-player';
+import MurottalList from '../components/murottal-list/murottal-list';
+
+const Murottal = ({}) => {
   return (
     <>
       <Head>
@@ -10,12 +13,10 @@ export default function Murottal({}) {
       </Head>
 
       <Header pageTitle='QuranKu | Murottal' />
-      <main style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }} className='my-16 flex flex-col justify-center items-center'>
-        <div className='flex flex-col items-center justify-center'>
-          <p className='text-xl text-center'>Terima kasih telah menggunakan QuranKu</p>
-          <p className='text-xl text-center'>Halaman ini dalam tahap pengambangan</p>
-        </div>
-      </main>
+      <MurottalList />
+      <FooterPlayer />
     </>
   );
 };
+
+export default Murottal;

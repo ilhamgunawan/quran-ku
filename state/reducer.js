@@ -37,6 +37,11 @@ const reducer = (state, action) => {
         ...state,
         isDaftarAyatShow: !state.isDaftarAyatShow,
       };
+    case ACTION_TYPES.SET_CURRENT_PLAY_SURAH_DATA:
+      return {
+        ...state,
+        currentPlaySurahData: action.payload,
+      };
     default:
       return state;
   }

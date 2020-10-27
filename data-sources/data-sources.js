@@ -30,6 +30,15 @@ export const getMurottalUrl = async (surahId) => {
   return murottallUrl;
 };
 
+export const getMurottalAllUrl = async (surahId) => {
+  const response = await fetch(`https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/${surahId}.json`);
+  const data = await response.json();
+  return {
+    name: data.name,
+    recitations: data.recitations,
+  };
+};
+
 export const getAllSurahId = async () => {
   const surahList = await getSurahList();
   const filteredUnusedId =  surahList.filter((surah) => {

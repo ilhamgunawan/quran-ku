@@ -53,7 +53,7 @@ footer button:active {
 }
 
 @media screen and (min-width: 1024px) {
-  #__next main, .header-nav, .footer-buttons {
+  #__next main, .header-nav, .footer-buttons, .footer-player {
     width: 64rem !important;
     padding: 0 1rem;
     margin-left: auto !important;

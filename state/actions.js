@@ -30,3 +30,8 @@ export const setCurrentAyatNumberList = (ayatNumberList) => ({
 export const setDaftarAyatToggle = () => ({
   type: ACTION_TYPES.SET_DAFTAR_AYAT_TOGGLE,
 });
+
+export const setCurrentPlaySurahData = (data) => ({
+  type: ACTION_TYPES.SET_CURRENT_PLAY_SURAH_DATA,
+  payload: data,
+});
