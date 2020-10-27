@@ -6,7 +6,7 @@ import { customButtonLessHover } from '../button';
 import PlayButton from './play-button';
 import CloseButton from './close-button';
 
-const MurottalItem = ({ nama, nomor, arti, asma }) => {
+const MurottalItem = ({ nama, nomor, arti, asma, ayat }) => {
   const [expand, setExpand] = useState(false);
 
   const [murottalData, setMurottalData] = useState({
@@ -50,7 +50,10 @@ const MurottalItem = ({ nama, nomor, arti, asma }) => {
               <span className='text-left text-gray-700 font-light'>{arti}</span>
             </div>
           </div>
-          <span className='font-normal text-2xl'>{asma}</span>
+          <div className='flex flex-col'>
+            <span className='font-normal text-right text-2xl leading-none pb-1'>{asma}</span>
+            <span className='font-light text-right text-gray-700 leading-none pb-1'>{ayat} ayat</span>
+          </div>
         </div>
         { expand 
           ? <div style={{ position: 'relative' }} className='w-full flex flex-col items-center mt-4'>

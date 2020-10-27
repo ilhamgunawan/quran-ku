@@ -26,7 +26,7 @@ const PlayButton = ({ surahName, recitation }) => {
 
   return (
     <button onClick={onButtonClick} className={customButtonBlue}>
-      <PlayIcon />
+      <PlayIcon fillColor='#131313' />
       <span className='ml-2 font-medium'>{name}</span>
     </button>
   );
