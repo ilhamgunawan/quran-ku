@@ -6,7 +6,7 @@ const AyatTafsirListItem = ({ ayatNumber, tafsirText }) => {
         <div className='h-10 w-full border-t-2 border-blue-300 mb-8'>
           <p style={{ width: 'fit-content' }} className='text-2xl text-white font-semibold bg-blue-300 py-2 px-4 rounded-b-md'>Tafsir ayat ke-{ayatNumber}</p>
         </div>
-        <p className='text-lg leading-loose text-justify'>{tafsirText}</p>
+        <p lang='id' className='text-lg leading-loose text-justify'>{tafsirText}</p>
       </div>
     </li>
   );
