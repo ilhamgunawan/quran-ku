@@ -13,7 +13,7 @@ const FooterPlayer = () => {
   return (
     <>
       <Head>
-        <title>{surah ? `Murottal Quran Surat ${surah} - ${reciter} | QuranKu` : 'Murottal | QuranKu' }</title>
+        <title>{surah ? `Murottal Qur'an Surat ${surah} - ${reciter} | Qur'anKu` : "Murottal | Qur'anKu" }</title>
       </Head>
       <footer className='w-full fixed bottom-0 inset-x-0 flex bg-gray-900'>
         <div className='w-full flex-col footer-player'>

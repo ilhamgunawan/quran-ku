@@ -8,7 +8,7 @@ import BookmarkIcon from '../../assets/icons/bookmark-icon';
 const MenuList = () => {
   return (
     <ul className='flex flex-col items-center h-48 w-full'>
-      <MenuListItem navigateLink='/surat' buttonName='Baca Al-Quran' icon={<QuranIcon />} />
+      <MenuListItem navigateLink='/surat' buttonName="Baca Al-Qur'an" icon={<QuranIcon />} />
       <MenuListItem navigateLink='/tafsir' buttonName='Baca Tafsir' icon={<QuranBookIcon />} />
       <MenuListItem navigateLink='/murottal' buttonName='Murottal' icon={<ArabManIcon />} />
       <MenuListItem navigateLink='/penanda' buttonName='Penanda' icon={<BookmarkIcon />} />

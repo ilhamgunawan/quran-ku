@@ -8,10 +8,10 @@ const Murottal = ({}) => {
   return (
     <>
       <Head>
-        <title>Murottal | QuranKu</title>
+        <title>Murottal | Qur'anKu</title>
       </Head>
 
-      <Header pageTitle='QuranKu | Murottal' />
+      <Header pageTitle="Qur'anKu | Murottal" />
       <MurottalList />
       <FooterPlayer />
     </>

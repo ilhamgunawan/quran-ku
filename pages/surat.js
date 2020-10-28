@@ -7,9 +7,9 @@ const SuratListPage = () => {
   return (
     <>
       <Head>
-        <title>Baca Al-Quran | QuranKu</title>
+        <title>Baca Al-Qur'an | Qur'anKu</title>
       </Head>
-      <Header pageTitle='QuranKu | Daftar Surat' />
+      <Header pageTitle="Qur'anKu | Daftar Surat" />
       <SurahList />
     </>
   );

@@ -50,7 +50,7 @@ const AnNaas = ({ newSurah }) => {
   return (
     <>
       <Head>
-        <title>Quran Surat An-Naas | QuranKu</title>
+        <title>Qur'an Surat An-Naas | Qur'anKu</title>
         <link
             rel="preload"
             href="/fonts/LPMQ.ttf"
@@ -70,7 +70,7 @@ const AnNaas = ({ newSurah }) => {
                 <p className='mt-10 text-gray-700 leading-relaxed text-justify'>Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.</p>
               </div>
             </li>
-            {versesArray.map((ayat) => <AyatListItem key={ayat.ayatNumber} surahName='An-Naas' surahId='114' {...ayat} /> )}
+            {versesArray.map((ayat) => <AyatListItem key={`An-Naas-${ayat.ayatNumber}`} surahName='An-Naas' surahId='114' {...ayat} /> )}
           </ul>
           <audio id="audio-murottal" src={currentMurottal} loop={true} />
         </main>

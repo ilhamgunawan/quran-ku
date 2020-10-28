@@ -27,6 +27,8 @@ const AyatListItem = ({ surahName, surahId, ayatNumber, arabic, translations }) 
     });
     setAyatBookmarked(true);
 
+    console.log(getAyat(ayatKey));
+
     setBookmarkNotif({
       message: 'Ayat disimpan di penanda',
       display: true,
@@ -43,6 +45,8 @@ const AyatListItem = ({ surahName, surahId, ayatNumber, arabic, translations }) 
   const onClickRemoveAyat = () => {
     removeAyat(ayatKey);
     setAyatBookmarked(false);
+
+    console.log(getAyat(ayatKey));
 
     setBookmarkNotif({
       message: 'Ayat dihapus dari penanda',
@@ -61,7 +65,7 @@ const AyatListItem = ({ surahName, surahId, ayatNumber, arabic, translations }) 
     if (getAyat(ayatKey)) {
       setAyatBookmarked(true);
     }
-  });
+  }, []);
 
   return (
     <li className='mb-5 border-b pb-3'>

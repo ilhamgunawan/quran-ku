@@ -16,7 +16,7 @@ const NavMenu = () => {
       }}
     >
       <NavMenuItem navUrl='/' buttonName='Beranda' icon={<HomeIcon />} />
-      <NavMenuItem navUrl='/surat' buttonName='Baca Al-Quran' icon={<QuranIcon />} />
+      <NavMenuItem navUrl='/surat' buttonName="Baca Al-Qur'an" icon={<QuranIcon />} />
       <NavMenuItem navUrl='/tafsir' buttonName='Baca Tafsir' icon={<QuranBookIcon />} />
       <NavMenuItem navUrl='/murottal' buttonName='Murottal' icon={<ArabManIcon />} />
       <NavMenuItem navUrl='/penanda' buttonName='Penanda' icon={<BookmarkIcon />} />

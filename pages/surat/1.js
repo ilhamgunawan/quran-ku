@@ -50,7 +50,7 @@ const AlFatihah = ({ newSurah }) => {
   return (
     <>
       <Head>
-        <title>Quran Surat Al-Fatihah | QuranKu</title>
+        <title>Qur'an Surat Al-Fatihah | Qur'anKu</title>
         <link
             rel="preload"
             href="/fonts/LPMQ.ttf"
@@ -61,7 +61,7 @@ const AlFatihah = ({ newSurah }) => {
 
       <Header pageTitle='Al-Fatihah | 7 ayat' />
         <main style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }} className='my-16'>
-          <ul>{versesArray.map((ayat) => <AyatListItem key={ayat.ayatNumber} surahId='1' surahName='Al-Fatihah' {...ayat} /> )}</ul>
+          <ul>{versesArray.map((ayat) => <AyatListItem key={`Al-Fatihah-${ayat.ayatNumber}`} surahId='1' surahName='Al-Fatihah' {...ayat} /> )}</ul>
           <audio id="audio-murottal" src={currentMurottal} loop={true} />
         </main>
       <Footer 

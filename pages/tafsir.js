@@ -7,10 +7,10 @@ const TafsirListPage = () => {
   return (
     <>
       <Head>
-        <title>Tafsir | QuranKu</title>
+        <title>Tafsir | Qur'anKu</title>
       </Head>
 
-      <Header pageTitle='QuranKu | Tafsir' />
+      <Header pageTitle="Qur'anKu | Tafsir" />
       <TafsirList />
     </>
   );

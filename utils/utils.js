@@ -129,5 +129,5 @@ export const getDateInIndonesia = () => {
     case 11: bulan = "Desember"; break;
   }
 
-  return `${hari}, ${tanggal} ${bulan} ${tahun} pukul ${jam}:${menit} WIB`;
+  return `${hari}, ${tanggal} ${bulan} ${tahun} pukul ${jam}:${menit}`;
 };
