@@ -84,7 +84,6 @@ const SurahDetail = ({ surahId, murottalUrl, nextName, previousName }) => {
     <>
       <Head>
         <title>Quran Surat {name_latin ? name_latin : ''} | QuranKu</title>
-        <link rel="icon" href="/favicon.ico" />
         <link
             rel="preload"
             href="/fonts/LPMQ.ttf"
@@ -107,7 +106,7 @@ const SurahDetail = ({ surahId, murottalUrl, nextName, previousName }) => {
                       <p className='mt-10 text-gray-700 leading-relaxed text-justify'>Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.</p>
                     </div>
                   </li>
-                  {versesArray.map((ayat) => <AyatListItem key={ayat.ayatNumber} {...ayat} /> )}
+                  {versesArray.map((ayat) => <AyatListItem key={ayat.ayatNumber} surahId={surahId} surahName={name_latin} {...ayat} /> )}
                 </ul>
                 <audio id="audio-murottal" src={currentMurottal} loop={true} />
               </main>

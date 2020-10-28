@@ -37,6 +37,11 @@ footer button:active {
   transition: background-color 0.1s ease;
 }
 
+.bookmark-button:active {
+  background-color: #EDF2F7;
+  transition: background-color 0.1s ease;
+}
+
 .arabic-text {
   font-family: 'fontArab';
   font-weight: 400;
@@ -50,6 +55,18 @@ footer button:active {
   height: 90px;
   margin-top: -90px;
   visibility: hidden;
+}
+
+@media screen and (max-width: 320px) {
+
+}
+
+@media screen and (max-width: 425px) {
+
+}
+
+@media screen and (max-width: 768px) {
+  
 }
 
 @media screen and (min-width: 1024px) {

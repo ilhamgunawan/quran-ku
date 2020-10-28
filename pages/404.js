@@ -8,7 +8,6 @@ const NotFoundPage = () => {
     <>
       <Head>
         <title>Halaman tidak ditemukan | QuranKu</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header pageTitle='QuranKu' />
       <main style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }} className='my-16 flex flex-col items-center'>

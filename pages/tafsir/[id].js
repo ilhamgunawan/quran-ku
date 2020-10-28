@@ -46,7 +46,6 @@ const TafsirDetail = ({ surahId, tafsir, name, source, nextName, previousName })
     <>
       <Head>
         <title>Tafsir Quran Surat {name} | QuranKu</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header pageTitle={`Tafsir Surat ${name}`} />
       <main style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }} className='my-16'>

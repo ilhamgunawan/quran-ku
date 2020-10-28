@@ -9,7 +9,6 @@ const Murottal = ({}) => {
     <>
       <Head>
         <title>Murottal | QuranKu</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header pageTitle='QuranKu | Murottal' />

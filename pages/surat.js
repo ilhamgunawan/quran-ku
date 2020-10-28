@@ -8,7 +8,6 @@ const SuratListPage = () => {
     <>
       <Head>
         <title>Baca Al-Quran | QuranKu</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header pageTitle='QuranKu | Daftar Surat' />
       <SurahList />

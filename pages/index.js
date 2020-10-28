@@ -8,13 +8,12 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Beranda | QuranKu</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Beranda | Qur'anKu</title>
       </Head>
-      <Header pageTitle='QuranKu | Beranda' />
+      <Header pageTitle="Qur'anKu | Beranda" />
       <main 
-        style={{ width: '95%', margin: 'auto' }} 
-        className='flex flex-col justify-center items-center'
+        style={{ width: '95%', margin: '7.5rem auto' }} 
+        className='flex flex-col items-center'
       >
         <div className='home-logo-container'>
           <MosqueLogo />
