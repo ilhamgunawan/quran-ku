@@ -79,6 +79,7 @@ const AyatListItem = ({ surahName, surahId, ayatNumber, arabic, translations }) 
           {
             isAyatBookmarked
               ? <button 
+                  aria-label={`Hapus penanda ${surahName} ayat ${ayatNumber}`}
                   style={{
                     width: 'fit-content'
                   }}
@@ -88,6 +89,7 @@ const AyatListItem = ({ surahName, surahId, ayatNumber, arabic, translations }) 
                   <BookmarkIcon />
                 </button>
               : <button 
+                  aria-label={`Penanda ${surahName} ayat ${ayatNumber}`}
                   style={{
                     width: 'fit-content'
                   }}
