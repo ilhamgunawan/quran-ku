@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "next": "9.5.5",
+    "next-pwa": "^3.1.5",
     "postcss-cli": "^8.1.0",
     "react": "17.0.0",
     "react-audio-player": "^0.14.0",
