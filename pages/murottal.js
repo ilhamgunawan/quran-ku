@@ -1,8 +1,8 @@
-import Head from 'next/head';
+import Head from "next/head";
 
-import Header from '../components/header/header';
-import FooterPlayer from '../components/footer/footer-player';
-import MurottalList from '../components/murottal-list/murottal-list';
+import Header from "../components/header/header";
+import FooterPlayer from "../components/footer/footer-player";
+import MurottalList from "../components/murottal-list/murottal-list";
 
 const Murottal = ({}) => {
   return (

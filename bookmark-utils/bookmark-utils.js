@@ -1,11 +1,11 @@
 export const getAllAyat = () => {
   const storageArray = Object.entries(localStorage)
-  .filter((object) => {
-    return !object[0].includes('ally-supports-cache');
-  })
-  .map((ayatArray) => {
-    return JSON.parse(ayatArray[1]);
-  });
+    .filter((object) => {
+      return !object[0].includes("ally-supports-cache");
+    })
+    .map((ayatArray) => {
+      return JSON.parse(ayatArray[1]);
+    });
 
   return storageArray;
 };

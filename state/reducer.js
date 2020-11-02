@@ -1,7 +1,7 @@
-import ACTION_TYPES from './types';
+import ACTION_TYPES from "./types";
 
 const reducer = (state, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case ACTION_TYPES.SET_LOADING_TRUE:
       return {
         ...state,
@@ -16,7 +16,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         surahList: action.payload,
-      }
+      };
     case ACTION_TYPES.SET_CURRENT_MUROTTAL:
       return {
         ...state,
@@ -50,6 +50,6 @@ const reducer = (state, action) => {
     default:
       return state;
   }
-}
+};
 
 export default reducer;

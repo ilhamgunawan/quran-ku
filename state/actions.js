@@ -1,4 +1,4 @@
-import ACTION_TYPES from './types';
+import ACTION_TYPES from "./types";
 
 export const setLoadingTrue = () => ({
   type: ACTION_TYPES.SET_LOADING_TRUE,

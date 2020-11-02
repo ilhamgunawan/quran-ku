@@ -1,11 +1,15 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from "react";
 
-import { Context } from '../../state/store';
-import { setSurahList, setLoadingTrue, setLoadingFalse } from '../../state/actions';
-import { getSurahList } from '../../data-sources/data-sources';
+import { Context } from "../../state/store";
+import {
+  setSurahList,
+  setLoadingTrue,
+  setLoadingFalse,
+} from "../../state/actions";
+import { getSurahList } from "../../data-sources/data-sources";
 
-import LoadingSpinner from '../loading-spinner/loading-spinner';
-import SurahListItem from './surah-list-item';
+import LoadingSpinner from "../loading-spinner/loading-spinner";
+import SurahListItem from "./surah-list-item";
 
 const SurahList = () => {
   const [state, dispatch] = useContext(Context);
@@ -35,20 +39,25 @@ const SurahList = () => {
     fetchSurahList();
   }, []);
 
-  return (
-    isLoading
-      ? <LoadingSpinner />
-      : <main style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }} className='my-16'> 
-          <input 
-            type='search' 
-            placeholder='Pencarian surat, contoh: Al Fatihah'
-            className='w-full my-2 p-4 h-16 border-2 border-teal-400 rounded outline-none'
-            onChange={onInputChange}
-          />
-          <ul className='w-full flex flex-col items-center'>
-            {filteredSurahList.map((surah) => <SurahListItem key={surah.nomor} {...surah} /> )}
-          </ul>
-        </main>
+  return isLoading ? (
+    <LoadingSpinner />
+  ) : (
+    <main
+      style={{ width: "95%", marginLeft: "auto", marginRight: "auto" }}
+      className="my-16"
+    >
+      <input
+        type="search"
+        placeholder="Pencarian surat, contoh: Al Fatihah"
+        className="w-full my-2 p-4 h-16 border-2 border-teal-400 rounded outline-none"
+        onChange={onInputChange}
+      />
+      <ul className="w-full flex flex-col items-center">
+        {filteredSurahList.map((surah) => (
+          <SurahListItem key={surah.nomor} {...surah} />
+        ))}
+      </ul>
+    </main>
   );
 };
 

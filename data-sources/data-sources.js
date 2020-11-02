@@ -1,6 +1,6 @@
 const BASE_URL = {
-  SURAH_LIST_URL: 'https://api.npoint.io/99c279bb173a6e28359c/data',
-  SURAH_DETAIL_URL: 'https://quran-json-private.web.app/surah',
+  SURAH_LIST_URL: "https://api.npoint.io/99c279bb173a6e28359c/data",
+  SURAH_DETAIL_URL: "https://quran-json-private.web.app/surah",
 };
 
 export const getSurahList = async () => {
@@ -25,13 +25,17 @@ export const getTafsir = async (surahId) => {
 };
 
 export const getMurottalUrl = async (surahId) => {
-  const response = await fetch(`https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/${surahId}.json`);
+  const response = await fetch(
+    `https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/${surahId}.json`
+  );
   const murottallUrl = (await response.json()).recitations[0].audio_url;
   return murottallUrl;
 };
 
 export const getMurottalAllUrl = async (surahId) => {
-  const response = await fetch(`https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/${surahId}.json`);
+  const response = await fetch(
+    `https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/${surahId}.json`
+  );
   const data = await response.json();
   return {
     name: data.name,
@@ -41,16 +45,16 @@ export const getMurottalAllUrl = async (surahId) => {
 
 export const getAllSurahId = async () => {
   const surahList = await getSurahList();
-  const filteredUnusedId =  surahList.filter((surah) => {
-    return surah.nomor !== '1' && surah.nomor !== '114';
+  const filteredUnusedId = surahList.filter((surah) => {
+    return surah.nomor !== "1" && surah.nomor !== "114";
   });
 
   return filteredUnusedId.map((surah) => {
     return {
       params: {
         id: surah.nomor,
-      }
-    }
+      },
+    };
   });
 };
 
@@ -61,7 +65,7 @@ export const getAllSurahIdUnfiltered = async () => {
     return {
       params: {
         id: surah.nomor,
-      }
+      },
     };
   });
 };

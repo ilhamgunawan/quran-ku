@@ -1,7 +1,7 @@
-import Head from 'next/head';
+import Head from "next/head";
 
-import Header from '../components/header/header';
-import SurahList from '../components/surah-list/surah-list';
+import Header from "../components/header/header";
+import SurahList from "../components/surah-list/surah-list";
 
 const SuratListPage = () => {
   return (

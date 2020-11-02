@@ -1,7 +1,7 @@
-import Head from 'next/head';
+import Head from "next/head";
 
-import Header from '../components/header/header';
-import TafsirList from '../components/tafsir-list/tafsir-list';
+import Header from "../components/header/header";
+import TafsirList from "../components/tafsir-list/tafsir-list";
 
 const TafsirListPage = () => {
   return (

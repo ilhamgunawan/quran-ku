@@ -1,10 +1,13 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 
-import { Context } from '../../state/store';
-import { setCurrentMurottal, setCurrentPlaySurahData } from '../../state/actions';
+import { Context } from "../../state/store";
+import {
+  setCurrentMurottal,
+  setCurrentPlaySurahData,
+} from "../../state/actions";
 
-import { customButtonBlue } from '../button';
-import PlayIcon from '../../assets/icons/play-icon';
+import { customButtonBlue } from "../button";
+import PlayIcon from "../../assets/icons/play-icon";
 
 const PlayButton = ({ surahName, recitation }) => {
   const [state, dispatch] = useContext(Context);
@@ -19,15 +22,15 @@ const PlayButton = ({ surahName, recitation }) => {
     await dispatch(setCurrentMurottal(audio_url));
     await dispatch(setCurrentPlaySurahData(currentPlayData));
 
-    const audioPlayer = document.getElementById('audio-player');
+    const audioPlayer = document.getElementById("audio-player");
     audioPlayer.load();
     audioPlayer.play();
   };
 
   return (
     <button onClick={onButtonClick} className={customButtonBlue}>
-      <PlayIcon fillColor='#131313' />
-      <span className='ml-2 font-medium'>{name}</span>
+      <PlayIcon fillColor="#131313" />
+      <span className="ml-2 font-medium">{name}</span>
     </button>
   );
 };

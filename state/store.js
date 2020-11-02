@@ -1,13 +1,13 @@
-import { createContext, useReducer } from 'react';
-import reducer from './reducer';
+import { createContext, useReducer } from "react";
+import reducer from "./reducer";
 
 const INITIAL_STATE = {
   surahList: [],
   tafsirList: [],
-  currentMurottal: '',
+  currentMurottal: "",
   currentPlaySurahData: {
-    surah: '',
-    reciter: '',
+    surah: "",
+    reciter: "",
   },
   currentAyatNumberList: [],
   isDaftarAyatShow: false,
@@ -21,9 +21,7 @@ const Store = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   return (
-    <Context.Provider value={[state, dispatch]}>
-      {children}
-    </Context.Provider>
+    <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
   );
 };
 

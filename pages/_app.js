@@ -1,7 +1,7 @@
-import '../styles/globals.css'
-import '../styles/tailwind.css'
+import "../styles/globals.css";
+import "../styles/tailwind.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import Store from '../state/store';
+import Store from "../state/store";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -11,4 +11,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp
+export default MyApp;
