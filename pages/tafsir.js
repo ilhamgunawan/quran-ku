@@ -1,17 +1,28 @@
 import Head from "next/head";
 
-import Header from "../components/header/header";
-import TafsirList from "../components/tafsir-list/tafsir-list";
+import { getSurahList } from '../data-sources/data-sources';
 
-const TafsirListPage = () => {
+import Header from "../components/header/header";
+import SurahList from '../components/surah-list/surah-list';
+
+export const getStaticProps = async () => {
+  const surahList = await getSurahList();
+
+  return {
+    props: {
+      surahList,
+    }
+  };
+};
+
+const TafsirListPage = ({ surahList }) => {
   return (
     <>
       <Head>
         <title>Tafsir | Qur'anKu</title>
       </Head>
-
       <Header pageTitle="Qur'anKu | Tafsir" />
-      <TafsirList />
+      <SurahList surahList={surahList} surahItemLinkPrefix='tafsir' />
     </>
   );
 };

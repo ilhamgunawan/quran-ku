@@ -1,21 +1,9 @@
-import { useContext, useEffect, useState } from "react";
-
-import { Context } from "../../state/store";
-import {
-  setSurahList,
-  setLoadingTrue,
-  setLoadingFalse,
-} from "../../state/actions";
-import { getSurahList } from "../../data-sources/data-sources";
-
-import LoadingSpinner from "../loading-spinner/loading-spinner";
+import { useState } from "react";
 import SurahListItem from "./surah-list-item";
 
-const SurahList = () => {
-  const [state, dispatch] = useContext(Context);
-  const { surahList, isLoading } = state;
-
-  const [filteredSurahList, setFilteredSurahList] = useState([]);
+const SurahList = ({ surahList, surahItemLinkPrefix }) => {
+  const [filteredSurahList, setFilteredSurahList] = useState(surahList);
+  const [isSearchResultEmpty, setSearchResultEmpty] = useState(false);
 
   const onInputChange = (event) => {
     const searchValueLoweredCase = event.target.value.toLowerCase();
@@ -24,24 +12,16 @@ const SurahList = () => {
       return surahNameLoweredCase.includes(searchValueLoweredCase);
     });
 
-    setFilteredSurahList(filteredSearch);
+    if (filteredSearch.length !== 0) {
+      setSearchResultEmpty(false);
+      setFilteredSurahList(filteredSearch);
+    } else {
+      setSearchResultEmpty(true);
+      setFilteredSurahList(filteredSearch);
+    }
   };
 
-  const fetchSurahList = async () => {
-    dispatch(setLoadingTrue());
-    const surahList = await getSurahList();
-    setFilteredSurahList(surahList);
-    dispatch(setSurahList(surahList));
-    dispatch(setLoadingFalse());
-  };
-
-  useEffect(() => {
-    fetchSurahList();
-  }, []);
-
-  return isLoading ? (
-    <LoadingSpinner />
-  ) : (
+  return (
     <main
       style={{ width: "95%", marginLeft: "auto", marginRight: "auto" }}
       className="my-16"
@@ -52,11 +32,17 @@ const SurahList = () => {
         className="w-full my-2 p-4 h-16 border-2 border-teal-400 rounded outline-none"
         onChange={onInputChange}
       />
-      <ul className="w-full flex flex-col items-center">
-        {filteredSurahList.map((surah) => (
-          <SurahListItem key={surah.nomor} {...surah} />
-        ))}
-      </ul>
+      {isSearchResultEmpty ? (
+        <p className="text-center font-semibold text-gray-700">
+          Maaf, pencarian tidak ditemukan
+        </p>
+      ) : (
+        <ul className="w-full flex flex-col items-center">
+          {filteredSurahList.map((surah) => (
+            <SurahListItem key={surah.nomor} {...surah} surahItemLinkPrefix={surahItemLinkPrefix} />
+          ))}
+        </ul>
+      )}
     </main>
   );
 };
