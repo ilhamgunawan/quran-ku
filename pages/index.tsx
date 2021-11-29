@@ -1,14 +1,12 @@
-import Head from "next/head";
 import Header from "../components/header/header";
 import MosqueLogo from "../assets/images/nabawi-mosque";
 import MenuList from "../components/menu-list/menu-list";
+import BasicMeta from "../components/meta/basic-meta";
 
-const Home = () => {
+export default function Home() {
   return (
     <>
-      <Head>
-        <title>Beranda | Qur'anKu</title>
-      </Head>
+      <BasicMeta />
       <Header pageTitle="Qur'anKu | Beranda" />
       <main
         style={{ width: "95%", margin: "7.5rem auto" }}
@@ -22,5 +20,3 @@ const Home = () => {
     </>
   );
 };
-
-export default Home;
