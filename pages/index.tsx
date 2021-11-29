@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <BasicMeta />
-      <Header pageTitle="Qur'anKu | Beranda" />
+      <Header pageTitle="QuranKu | Beranda" />
       <main
         style={{ width: "95%", margin: "7.5rem auto" }}
         className="flex flex-col items-center"
