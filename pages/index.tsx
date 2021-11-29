@@ -1,5 +1,4 @@
 import Head from "next/head";
-
 import Header from "../components/header/header";
 import MosqueLogo from "../assets/images/nabawi-mosque";
 import MenuList from "../components/menu-list/menu-list";
