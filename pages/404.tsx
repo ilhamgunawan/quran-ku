@@ -1,9 +1,8 @@
 import Head from "next/head";
-
 import Header from "../components/header/header";
 import SadIcon from "../assets/icons/sad-icon";
 
-const NotFoundPage = () => {
+export default function NotFoundPage() {
   return (
     <>
       <Head>
@@ -22,5 +21,3 @@ const NotFoundPage = () => {
     </>
   );
 };
-
-export default NotFoundPage;

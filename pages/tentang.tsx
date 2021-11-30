@@ -1,14 +1,13 @@
-import Head from "next/head";
-
 import Header from "../components/header/header";
+import BasicMeta from "../components/meta/basic-meta";
 
-const AboutPage = () => {
+export default function AboutPage() {
   return (
     <>
-      <Head>
-        <title>Tentang | Qur'anKu</title>
-      </Head>
-      <Header pageTitle="Qur'anKu | Tentang" />
+      <BasicMeta 
+        title="Tentang - Baca QuranKu"
+      />
+      <Header pageTitle="QuranKu | Tentang" />
       <main
         style={{ width: "95%", marginLeft: "auto", marginRight: "auto" }}
         className="my-16 flex flex-col items-center"
@@ -17,7 +16,7 @@ const AboutPage = () => {
           style={{ maxWidth: "350px" }}
           className="py-10 text-center text-xl font-normal"
         >
-          <strong>Qur'anKu</strong> adalah aplikasi Al-Qur'an berbasis web yang
+          <strong>QuranKu</strong> adalah aplikasi Al-Qur'an berbasis web yang
           dioptimalkan untuk digunakan pada perangkat mobile maupun desktop.
         </p>
         <section className="mx-8">
@@ -123,22 +122,20 @@ const AboutPage = () => {
           </ul>
         </section>
         <p className="mt-20 text-center">
-          <strong>Qur'anKu</strong> &copy; 2020
+          <strong>QuranKu</strong> &copy; 2020 - 2021
         </p>
         <p className="text-center">
           Dibuat oleh{" "}
           <a
-            href="https://ilhamgunawan.now.sh"
+            href="https://ilhamgunawan.my.id"
             target="_blank"
             rel="noreferrer noopener"
             className="text-blue-400 font-semibold"
           >
-            Ilham Gunawan
+            Ilham Muhammad Ramdhan Gunawan
           </a>
         </p>
       </main>
     </>
   );
 };
-
-export default AboutPage;
