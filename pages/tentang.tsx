@@ -122,17 +122,17 @@ export default function AboutPage() {
           </ul>
         </section>
         <p className="mt-20 text-center">
-          <strong>QuranKu</strong> &copy; 2020 - 2021
+          <strong>QuranKu</strong> &copy; 2022 - 2023
         </p>
         <p className="text-center">
           Dibuat oleh{" "}
           <a
-            href="https://ilhamgunawan.my.id"
+            href="https://organizer.web.id/"
             target="_blank"
             rel="noreferrer noopener"
             className="text-blue-400 font-semibold"
           >
-            Ilham Muhammad Ramdhan Gunawan
+            Ari Agus Supriyadi
           </a>
         </p>
       </main>
