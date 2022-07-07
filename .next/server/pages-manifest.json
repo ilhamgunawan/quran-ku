@@ -1,0 +1,16 @@
+{
+  "/404": "pages/404.js",
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/": "pages/index.js",
+  "/murottal": "pages/murottal.js",
+  "/penanda": "pages/penanda.js",
+  "/surat": "pages/surat.js",
+  "/surat/1": "pages/surat/1.js",
+  "/surat/114": "pages/surat/114.js",
+  "/surat/[id]": "pages/surat/[id].js",
+  "/tafsir": "pages/tafsir.js",
+  "/tafsir/[id]": "pages/tafsir/[id].js",
+  "/tentang": "pages/tentang.js",
+  "/_error": "pages/_error.js"
+}

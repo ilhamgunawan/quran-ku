@@ -1,0 +1,112 @@
+{
+  "polyfillFiles": [
+    "static/chunks/polyfills-5cd94c89d3acac5f.js"
+  ],
+  "devFiles": [],
+  "ampDevFiles": [],
+  "lowPriorityFiles": [
+    "static/m1VGGlvtJRc9qCtu3lTFR/_buildManifest.js",
+    "static/m1VGGlvtJRc9qCtu3lTFR/_ssgManifest.js",
+    "static/m1VGGlvtJRc9qCtu3lTFR/_middlewareManifest.js"
+  ],
+  "pages": {
+    "/": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/441-ee6e247a47ea3759.js",
+      "static/chunks/pages/index-611d6491981903d7.js"
+    ],
+    "/404": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/441-ee6e247a47ea3759.js",
+      "static/chunks/pages/404-944b08b13378d094.js"
+    ],
+    "/_app": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/css/027fb220e5a7dfd0.css",
+      "static/chunks/pages/_app-90c06655c6130bdf.js"
+    ],
+    "/_error": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/pages/_error-2280fa386d040b66.js"
+    ],
+    "/murottal": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/520-78da30b36d44fbdd.js",
+      "static/chunks/441-ee6e247a47ea3759.js",
+      "static/chunks/pages/murottal-b0bdf8a97e00cd67.js"
+    ],
+    "/penanda": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/441-ee6e247a47ea3759.js",
+      "static/chunks/pages/penanda-2606c9acc0016154.js"
+    ],
+    "/surat": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/441-ee6e247a47ea3759.js",
+      "static/chunks/838-ec131eba1f9bbe24.js",
+      "static/chunks/pages/surat-e6da19f835b9c3a1.js"
+    ],
+    "/surat/1": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/441-ee6e247a47ea3759.js",
+      "static/chunks/999-28f26aa8d8d9dd47.js",
+      "static/chunks/pages/surat/1-58bbea6d76cef0f0.js"
+    ],
+    "/surat/114": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/441-ee6e247a47ea3759.js",
+      "static/chunks/999-28f26aa8d8d9dd47.js",
+      "static/chunks/pages/surat/114-970698666c312cfb.js"
+    ],
+    "/surat/[id]": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/441-ee6e247a47ea3759.js",
+      "static/chunks/999-28f26aa8d8d9dd47.js",
+      "static/chunks/pages/surat/[id]-24b4d9b5b7f107e9.js"
+    ],
+    "/tafsir": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/441-ee6e247a47ea3759.js",
+      "static/chunks/838-ec131eba1f9bbe24.js",
+      "static/chunks/pages/tafsir-dc8ed2c399a49d12.js"
+    ],
+    "/tafsir/[id]": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/441-ee6e247a47ea3759.js",
+      "static/chunks/999-28f26aa8d8d9dd47.js",
+      "static/chunks/pages/tafsir/[id]-8f1366abeb68dcda.js"
+    ],
+    "/tentang": [
+      "static/chunks/webpack-2b99834efceef160.js",
+      "static/chunks/framework-a6bd9c47507e79d6.js",
+      "static/chunks/main-7217261e788ab034.js",
+      "static/chunks/441-ee6e247a47ea3759.js",
+      "static/chunks/pages/tentang-69b041b3012e709e.js"
+    ]
+  },
+  "ampFirstPages": []
+}

@@ -1,0 +1,30 @@
+{
+  "name": "next-pwa",
+  "version": "3.1.5",
+  "description": "Next.js with PWA, powered by workbox.",
+  "main": "index.js",
+  "repository": "https://github.com/shadowwalker/next-pwa",
+  "author": "ShadowWalker <w@weiw.io>",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "nextjs",
+    "pwa",
+    "workbox",
+    "web",
+    "service-worker"
+  ],
+  "dependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "globby": "^11.0.1",
+    "workbox-webpack-plugin": "^5.1.4",
+    "workbox-window": "^5.1.4"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0"
+  },
+  "peerDependencies": {
+    "next": ">=7.0.0",
+    "webpack": ">=4.0.0"
+  }
+}
