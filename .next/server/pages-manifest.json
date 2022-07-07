@@ -1,16 +1,16 @@
 {
-  "/404": "pages/404.js",
+  "/404": "pages/404.html",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/murottal": "pages/murottal.js",
-  "/penanda": "pages/penanda.js",
+  "/": "pages/index.html",
+  "/murottal": "pages/murottal.html",
+  "/penanda": "pages/penanda.html",
   "/surat": "pages/surat.js",
   "/surat/1": "pages/surat/1.js",
   "/surat/114": "pages/surat/114.js",
   "/surat/[id]": "pages/surat/[id].js",
   "/tafsir": "pages/tafsir.js",
   "/tafsir/[id]": "pages/tafsir/[id].js",
-  "/tentang": "pages/tentang.js",
+  "/tentang": "pages/tentang.html",
   "/_error": "pages/_error.js"
 }
