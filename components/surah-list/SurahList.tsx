@@ -1,24 +1,24 @@
-import { useState } from "react";
-import SurahListItem from "./surah-list-item";
+import SurahListItem from "./SurahListItem";
+import { useState, ChangeEvent } from "react";
+import type { SurahItem } from "../../types/surah";
 
-const SurahList = ({ surahList, surahItemLinkPrefix }) => {
+export type Props = {
+	surahList: SurahItem[],
+	surahItemLinkPrefix: string,
+};
+
+export default function SurahList({ surahList, surahItemLinkPrefix }: Props) {
   const [filteredSurahList, setFilteredSurahList] = useState(surahList);
-  const [isSearchResultEmpty, setSearchResultEmpty] = useState(false);
+	const isSearchResultEmpty = filteredSurahList.length === 0;
 
-  const onInputChange = (event) => {
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchValueLoweredCase = event.target.value.toLowerCase();
     const filteredSearch = surahList.filter(({ nama }) => {
       const surahNameLoweredCase = nama.toLowerCase();
       return surahNameLoweredCase.includes(searchValueLoweredCase);
     });
 
-    if (filteredSearch.length !== 0) {
-      setSearchResultEmpty(false);
-      setFilteredSurahList(filteredSearch);
-    } else {
-      setSearchResultEmpty(true);
-      setFilteredSurahList(filteredSearch);
-    }
+		setFilteredSurahList(filteredSearch);
   };
 
   return (
@@ -39,12 +39,14 @@ const SurahList = ({ surahList, surahItemLinkPrefix }) => {
       ) : (
         <ul className="w-full flex flex-col items-center">
           {filteredSurahList.map((surah) => (
-            <SurahListItem key={surah.nomor} {...surah} surahItemLinkPrefix={surahItemLinkPrefix} />
+            <SurahListItem 
+							key={surah.nomor} 
+							surahItem={surah} 
+							surahItemLinkPrefix={surahItemLinkPrefix} 
+						/>
           ))}
         </ul>
       )}
     </main>
   );
-};
-
-export default SurahList;
+}
