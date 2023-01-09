@@ -2,9 +2,10 @@ import Head from "next/head";
 import Header from "../../components/header/header";
 import SurahList from "../../components/surah-list/SurahList";
 import { getSurahList } from '../../data-sources/data-sources';
+import type { SurahItem } from '../../types/surah';
 
 export type Props = {
-  surahList: any[]
+  surahList: SurahItem[]
 };
 
 export const getStaticProps = async () => {
