@@ -1,25 +1,21 @@
 import Head from "next/head";
 import { useEffect, useContext, useState } from "react";
 
-import {
-  getArabicNumber,
-  mapAyatObjectToArray,
-  getAyatNumberList,
-} from "../../utils/utils";
+import { mapAyatObjectToArray, getAyatNumberList } from "../../utils/utils";
 import { getSurah } from "../../data-sources/data-sources";
-import { Context } from "../../state/store";
+import { GlobalContext, DispatchContext } from "../../state/Store";
 import {
   setCurrentMurottal,
   murottalAudioToggle,
   setCurrentAyatNumberList,
 } from "../../state/actions";
 
-import Header from "../../components/header/header";
+import Header from "../../components/header/Header";
 import Footer from "../../components/footer/footer";
 import AyatListItem from "../../components/ayat-list/ayat-list-item";
 
 export const getStaticProps = async () => {
-  const surahDetails = await getSurah("114");
+  const surahDetails = await getSurah("1");
   return {
     props: {
       newSurah: surahDetails,
@@ -27,10 +23,11 @@ export const getStaticProps = async () => {
   };
 };
 
-const AnNaas = ({ newSurah }) => {
+const AlFatihah = ({ newSurah }) => {
   const { text, translations } = newSurah;
 
-  const [state, dispatch] = useContext(Context);
+  const state = useContext(GlobalContext);
+  const dispatch = useContext(DispatchContext);
   const { currentMurottal, isMurottalPlaying } = state;
 
   const [surah, setSurah] = useState({
@@ -49,7 +46,7 @@ const AnNaas = ({ newSurah }) => {
     }
     dispatch(
       setCurrentMurottal(
-        "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/114.mp3"
+        "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/001.mp3"
       )
     );
   };
@@ -62,33 +59,21 @@ const AnNaas = ({ newSurah }) => {
   return (
     <>
       <Head>
-        <title>Qur'an Surat An-Naas | Qur'anKu</title>
+        <title>Qur'an Surat Al-Fatihah | Qur'anKu</title>
         <link rel="preload" href="/fonts/LPMQ.ttf" as="font" crossOrigin="" />
       </Head>
 
-      <Header pageTitle="An-Naas | 6 ayat" />
+      <Header pageTitle="Al-Fatihah | 7 ayat" />
       <main
         style={{ width: "95%", marginLeft: "auto", marginRight: "auto" }}
         className="my-16"
       >
         <ul>
-          <li className="mb-5 border-b pb-3">
-            <div className="flex flex-col">
-              <div className="grid">
-                <p className="arabic-text col-start-2 ml-auto mr-0 text-right">
-                  بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
-                </p>
-              </div>
-              <p className="mt-10 text-gray-700 leading-relaxed text-justify">
-                Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.
-              </p>
-            </div>
-          </li>
           {versesArray.map((ayat) => (
             <AyatListItem
-              key={`An-Naas-${ayat.ayatNumber}`}
-              surahName="An-Naas"
-              surahId="114"
+              key={`Al-Fatihah-${ayat.ayatNumber}`}
+              surahId="1"
+              surahName="Al-Fatihah"
               {...ayat}
             />
           ))}
@@ -96,13 +81,13 @@ const AnNaas = ({ newSurah }) => {
         <audio id="audio-murottal" src={currentMurottal} loop={true} />
       </main>
       <Footer
-        previousId="113"
-        nextId={null}
-        previousName="Al Falaq"
-        nextName={null}
+        previousId={null}
+        nextId="2"
+        previousName={null}
+        nextName="Al Baqarah"
       />
     </>
   );
 };
 
-export default AnNaas;
+export default AlFatihah;

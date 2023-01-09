@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import BookmarkIcon from "../../assets/icons/bookmark-icon";
 
 const BookmarkItem = ({ surahName, ayatNumber, url, date }) => {

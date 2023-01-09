@@ -1,29 +1,36 @@
-import Link from "next/link";
-import { useContext } from "react";
-
-import { Context } from "../../state/store";
-import { setDaftarAyatToggle } from "../../state/actions";
-
 import NextIcon from "../../assets/icons/next-icon";
+import PlayIcon from "../../assets/icons/play-icon";
 import PreviousIcon from "../../assets/icons/previous-icon";
 import ListIcon from "../../assets/icons/list-icon";
+import PauseIcon from "../../assets/icons/pause-icon";
+import Link from "next/link";
+import { GlobalContext, DispatchContext } from "../../state/Store";
+import { useContext } from "react";
+import { murottalAudioToggle, setDaftarAyatToggle } from "../../state/actions";
 import DaftarAyat from "./daftar-ayat";
 
-const FooterTafsir = ({ previousId, nextId, previousName, nextName }) => {
-  const [state, dispatch] = useContext(Context);
-  const { isDaftarAyatShow } = state;
+const Footer = ({ previousId, nextId, previousName, nextName }) => {
+  const state = useContext(GlobalContext);
+  const dispatch = useContext(DispatchContext);
+  const { isMurottalPlaying, isDaftarAyatShow } = state;
 
-  if (nextId == "115") {
-    nextId = null;
-  } else if (previousId == "0") {
-    previousId = null;
-  }
+  const playMurottal = () => {
+    const audio = document.getElementById("audio-murottal") as HTMLAudioElement;
+    audio.play();
+    dispatch(murottalAudioToggle());
+  };
+
+  const pauseMurottal = () => {
+    const audio = document.getElementById("audio-murottal") as HTMLAudioElement;
+    audio.pause();
+    dispatch(murottalAudioToggle());
+  };
 
   return (
     <footer className="w-full fixed bottom-0 inset-x-0 flex bg-gray-900">
       <div className="w-full flex footer-buttons">
         {previousId ? (
-          <Link href={`/tafsir/${previousId}`}>
+          <Link href={`/surat/${previousId}`}>
             <button className="w-full flex flex-col items-center bg-gray-900 p-1 focus:outline-none">
               <span>
                 <PreviousIcon />
@@ -41,6 +48,29 @@ const FooterTafsir = ({ previousId, nextId, previousName, nextName }) => {
             <span className="text-white font-light text-xs"></span>
           </button>
         )}
+        {isMurottalPlaying ? (
+          <button
+            className="w-full flex flex-col items-center bg-gray-900 p-1 focus:outline-none"
+            onClick={pauseMurottal}
+          >
+            <span>
+              <PauseIcon />
+            </span>
+            <span className="text-white font-light text-xs">
+              Pause Murottal
+            </span>
+          </button>
+        ) : (
+          <button
+            className="w-full flex flex-col items-center bg-gray-900 p-1 focus:outline-none"
+            onClick={playMurottal}
+          >
+            <span>
+              <PlayIcon fillColor={null} />
+            </span>
+            <span className="text-white font-light text-xs">Play Murottal</span>
+          </button>
+        )}
         <div style={{ position: "relative" }} className="w-full">
           <button
             className="w-full flex flex-col items-center bg-gray-900 p-1 focus:outline-none"
@@ -54,7 +84,7 @@ const FooterTafsir = ({ previousId, nextId, previousName, nextName }) => {
           {isDaftarAyatShow ? <DaftarAyat /> : null}
         </div>
         {nextId ? (
-          <Link href={`/tafsir/${nextId}`}>
+          <Link href={`/surat/${nextId}`}>
             <button className="w-full flex flex-col items-center bg-gray-900 p-1 focus:outline-none">
               <span>
                 <NextIcon />
@@ -75,4 +105,4 @@ const FooterTafsir = ({ previousId, nextId, previousName, nextName }) => {
   );
 };
 
-export default FooterTafsir;
+export default Footer;

@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { useContext } from "react";
-
-import { Context } from "../../state/store";
+import { DispatchContext } from "../../state/Store";
 import { toggleNav } from "../../state/actions";
 
 const NavMenuItem = ({ navUrl, buttonName, icon }) => {
-  const [state, dispatch] = useContext(Context);
+  const dispatch = useContext(DispatchContext);
 
   return (
     <li>

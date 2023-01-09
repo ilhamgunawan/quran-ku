@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import { getAllAyat } from "../bookmark-utils/bookmark-utils";
+import { getAllAyat } from "../../bookmark-utils/bookmark-utils";
 
-import Header from "../components/header/header";
-import BookmarkItem from "../components/bookmark/bookmark-item";
-import BookmarkEmpty from "../components/bookmark/bookmark-empty";
+import Header from "../../components/header/Header";
+import BookmarkItem from "../../components/bookmark/bookmark-item";
+import BookmarkEmpty from "../../components/bookmark/bookmark-empty";
 
 const Penanda = () => {
   const [isBookmarkExist, setBookmarkExist] = useState(false);

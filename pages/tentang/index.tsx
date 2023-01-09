@@ -1,5 +1,5 @@
-import Header from "../components/header/header";
-import BasicMeta from "../components/meta/basic-meta";
+import Header from "../../components/header/Header";
+import BasicMeta from "../../components/meta/basic-meta";
 
 export default function AboutPage() {
   return (
@@ -122,7 +122,7 @@ export default function AboutPage() {
           </ul>
         </section>
         <p className="mt-20 text-center">
-          <strong>QuranKu</strong> &copy; 2020 - 2021
+          <strong>QuranKu</strong> &copy; 2020 - {new Date().getFullYear()}
         </p>
         <p className="text-center">
           Dibuat oleh{" "}

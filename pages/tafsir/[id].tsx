@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useContext, useEffect } from "react";
 
-import { Context } from "../../state/store";
+import { DispatchContext } from "../../state/Store";
 import { setCurrentAyatNumberList } from "../../state/actions";
 import { mapTafsirObjectToArray, getAyatNumberList } from "../../utils/utils";
 import {
@@ -10,7 +10,7 @@ import {
   getTafsir,
 } from "../../data-sources/data-sources";
 
-import Header from "../../components/header/header";
+import Header from "../../components/header/Header";
 import FooterTafsir from "../../components/footer/footer-tafsir";
 import AyatTafsirListItem from "../../components/ayat-list/ayat-tafsir-list-item";
 
@@ -47,7 +47,7 @@ const TafsirDetail = ({
   previousName,
 }) => {
   const tafsirArray = mapTafsirObjectToArray(tafsir);
-  const [state, dispatch] = useContext(Context);
+  const dispatch = useContext(DispatchContext);
 
   useEffect(() => {
     dispatch(setCurrentAyatNumberList(getAyatNumberList(tafsirArray)));

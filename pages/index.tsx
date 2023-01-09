@@ -1,4 +1,4 @@
-import Header from "../components/header/header";
+import Header from "../components/header/Header";
 import MosqueLogo from "../assets/images/nabawi-mosque";
 import MenuList from "../components/menu-list/menu-list";
 import BasicMeta from "../components/meta/basic-meta";

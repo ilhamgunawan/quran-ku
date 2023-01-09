@@ -1,6 +1,5 @@
 import { useContext } from "react";
-
-import { Context } from "../../state/store";
+import { DispatchContext } from "../../state/Store";
 import {
   setCurrentMurottal,
   setCurrentPlaySurahData,
@@ -10,7 +9,7 @@ import { customButtonBlue } from "../button";
 import PlayIcon from "../../assets/icons/play-icon";
 
 const PlayButton = ({ surahName, recitation }) => {
-  const [state, dispatch] = useContext(Context);
+  const dispatch = useContext(DispatchContext);
   const { name, audio_url } = recitation;
 
   const currentPlayData = {
@@ -22,7 +21,7 @@ const PlayButton = ({ surahName, recitation }) => {
     await dispatch(setCurrentMurottal(audio_url));
     await dispatch(setCurrentPlaySurahData(currentPlayData));
 
-    const audioPlayer = document.getElementById("audio-player");
+    const audioPlayer = document.getElementById("audio-player") as HTMLMediaElement;
     audioPlayer.load();
     audioPlayer.play();
   };

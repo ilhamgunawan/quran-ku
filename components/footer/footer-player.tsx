@@ -1,13 +1,10 @@
 import Head from "next/head";
 import { useContext } from "react";
-
-import { Context } from "../../state/store";
+import { GlobalContext } from "../../state/Store";
 
 const FooterPlayer = () => {
-  const [state, dispatch] = useContext(Context);
-
+  const state = useContext(GlobalContext);
   const { currentMurottal, currentPlaySurahData } = state;
-
   const { surah, reciter } = currentPlaySurahData;
 
   return (

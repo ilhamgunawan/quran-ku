@@ -1,6 +1,8 @@
 import Head from "next/head";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/footer";
+import AyatListItem from "../../components/ayat-list/ayat-list-item";
 import { useEffect, useContext } from "react";
-
 import { mapAyatObjectToArray, getAyatNumberList } from "../../utils/utils";
 import {
   getSurahNameAndAyat,
@@ -8,16 +10,12 @@ import {
   getSurah,
   getMurottalUrl,
 } from "../../data-sources/data-sources";
-import { Context } from "../../state/store";
+import { GlobalContext, DispatchContext } from "../../state/Store";
 import {
   setCurrentMurottal,
   murottalAudioToggle,
   setCurrentAyatNumberList,
 } from "../../state/actions";
-
-import Header from "../../components/header/header";
-import Footer from "../../components/footer/footer";
-import AyatListItem from "../../components/ayat-list/ayat-list-item";
 
 export const getStaticPaths = async () => {
   const paths = await getAllSurahId();
@@ -50,7 +48,8 @@ const SurahDetail = ({
   nextName,
   previousName,
 }) => {
-  const [state, dispatch] = useContext(Context);
+  const state = useContext(GlobalContext);
+  const dispatch = useContext(DispatchContext);
   const { currentMurottal, isMurottalPlaying, isLoading } = state;
 
   const { text, translations, number, name_latin, number_of_ayah } = surahData;

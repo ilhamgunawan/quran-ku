@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Header from "../components/header/header";
+import Header from "../components/header/Header";
 import SadIcon from "../assets/icons/sad-icon";
 
 export default function NotFoundPage() {
