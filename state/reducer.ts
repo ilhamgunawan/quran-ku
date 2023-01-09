@@ -1,6 +1,7 @@
 import ACTION_TYPES from "./types";
+import type { GlobalContextType, GlobalReducerAction } from "../types/globalContext";
 
-const reducer = (state, action) => {
+const reducer = (state: GlobalContextType, action: GlobalReducerAction) => {
   switch (action.type) {
     case ACTION_TYPES.SET_LOADING_TRUE:
       return {

@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-
 import { getArabicNumber, getDateInIndonesia } from "../../utils/utils";
 import {
   storeAyat,
   removeAyat,
   getAyat,
 } from "../../bookmark-utils/bookmark-utils";
-
 import BookmarkIcon from "../../assets/icons/bookmark-icon";
 import BookmarkBorderIcon from "../../assets/icons/bookmark-border-icon";
 

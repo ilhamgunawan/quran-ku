@@ -1,18 +1,17 @@
 import { useContext, useEffect, useState } from "react";
-
-import { Context } from "../../state/store";
+import { GlobalContext, DispatchContext } from "../../state/Store";
 import {
   setSurahList,
   setLoadingTrue,
   setLoadingFalse,
 } from "../../state/actions";
 import { getSurahList } from "../../data-sources/data-sources";
-
 import LoadingSpinner from "../loading-spinner/loading-spinner";
 import MurottalItem from "./murottal-item";
 
 const MurottalList = () => {
-  const [state, dispatch] = useContext(Context);
+  const state = useContext(GlobalContext);
+  const dispatch = useContext(DispatchContext);
   const { surahList, isLoading } = state;
 
   const [filteredSurahList, setFilteredSurahList] = useState([]);

@@ -1,13 +1,15 @@
+import LeftButton from "./LeftButton";
+import RightButton from "./RightButton";
+import NavMenu from "../nav-menu/NavMenu";
 import { useContext } from "react";
-import { Context } from "../../state/store";
+import { GlobalContext } from "../../state/Store";
 
-import LeftButton from "./left-button";
-import RightButton from "./right-button";
-import NavMenu from "../nav-menu/nav-menu";
+export type Props = {
+  pageTitle: string;
+};
 
-const Header = ({ pageTitle }) => {
-  const [state, dispatch] = useContext(Context);
-  const { isNavOpen } = state;
+export default function Header({ pageTitle }: Props) {
+  const { isNavOpen } = useContext(GlobalContext);
 
   return (
     <header
@@ -24,6 +26,4 @@ const Header = ({ pageTitle }) => {
       </nav>
     </header>
   );
-};
-
-export default Header;
+}

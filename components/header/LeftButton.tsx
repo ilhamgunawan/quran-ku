@@ -2,7 +2,11 @@ import Link from "next/link";
 import BackIcon from "../../assets/icons/back-icon";
 import InfoIcon from "../../assets/icons/info-icon";
 
-const LeftButton = ({ pageTitle }) => {
+export type Props = {
+	pageTitle: string,
+};
+
+export default function LeftButton({ pageTitle }: Props) {
   if (pageTitle.includes("ayat")) {
     return (
       <Link href="/surat">
@@ -32,7 +36,7 @@ const LeftButton = ({ pageTitle }) => {
           className="focus:outline-none h-10 w-10 rounded-full flex items-center justify-center"
           aria-label="Tentang"
         >
-          <InfoIcon />
+          <InfoIcon fillColor={null} />
         </button>
       </Link>
     );
@@ -48,6 +52,4 @@ const LeftButton = ({ pageTitle }) => {
       </Link>
     );
   }
-};
-
-export default LeftButton;
+}

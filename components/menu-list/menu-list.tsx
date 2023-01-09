@@ -1,48 +1,40 @@
-import NavMenuItem from "./nav-menu-item";
-import HomeIcon from "../../assets/icons/home-icon";
+import MenuListItem from "./menu-list-item";
 import QuranIcon from "../../assets/icons/quran-icon";
 import QuranBookIcon from "../../assets/icons/quran-book-icon";
 import ArabManIcon from "../../assets/icons/arab-man-icon";
 import InfoIcon from "../../assets/icons/info-icon";
 import BookmarkIcon from "../../assets/icons/bookmark-icon";
 
-const NavMenu = () => {
+const MenuList = () => {
   return (
-    <ul
-      className="absolute w-48 p-2 rounded-md shadow-lg bg-white"
-      style={{
-        top: "2.2rem",
-        right: "1.5rem",
-      }}
-    >
-      <NavMenuItem navUrl="/" buttonName="Beranda" icon={<HomeIcon />} />
-      <NavMenuItem
-        navUrl="/surat"
+    <ul className="flex flex-col items-center h-48 w-full">
+      <MenuListItem
+        navigateLink="/surat"
         buttonName="Baca Al-Qur'an"
         icon={<QuranIcon />}
       />
-      <NavMenuItem
-        navUrl="/tafsir"
+      <MenuListItem
+        navigateLink="/tafsir"
         buttonName="Baca Tafsir"
         icon={<QuranBookIcon />}
       />
-      <NavMenuItem
-        navUrl="/murottal"
+      <MenuListItem
+        navigateLink="/murottal"
         buttonName="Murottal"
         icon={<ArabManIcon />}
       />
-      <NavMenuItem
-        navUrl="/penanda"
+      <MenuListItem
+        navigateLink="/penanda"
         buttonName="Penanda"
         icon={<BookmarkIcon />}
       />
-      <NavMenuItem
-        navUrl="/tentang"
+      <MenuListItem
+        navigateLink="/tentang"
         buttonName="Tentang"
-        icon={<InfoIcon fillColor="black" />}
+        icon={<InfoIcon fillColor={null} />}
       />
     </ul>
   );
 };
 
-export default NavMenu;
+export default MenuList;

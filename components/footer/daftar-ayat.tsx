@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { Context } from "../../state/store";
+import { GlobalContext } from "../../state/Store";
 
 export default function DaftarAyat() {
-  const [state, dispatch] = useContext(Context);
+  const state = useContext(GlobalContext);
   const { currentAyatNumberList } = state;
 
   return (

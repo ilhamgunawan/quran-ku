@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Header from "../../components/header/header";
+import Header from "../../components/header/Header";
 import SurahList from "../../components/surah-list/SurahList";
 import { getSurahList } from '../../data-sources/data-sources';
 import type { SurahItem } from '../../types/surah';

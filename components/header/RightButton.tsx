@@ -1,11 +1,10 @@
+import MenuIcon from "../../assets/icons/menu-icon";
 import { useContext } from "react";
-import { Context } from "../../state/store";
+import { DispatchContext } from "../../state/Store";
 import { toggleNav } from "../../state/actions";
 
-import MenuIcon from "../../assets/icons/menu-icon";
-
-const RightButton = () => {
-  const [state, dispatch] = useContext(Context);
+export default function RightButton() {
+	const dispatch = useContext(DispatchContext);
 
   return (
     <button
@@ -16,6 +15,4 @@ const RightButton = () => {
       <MenuIcon />
     </button>
   );
-};
-
-export default RightButton;
+}

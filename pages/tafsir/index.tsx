@@ -1,9 +1,9 @@
 import Head from "next/head";
 
-import { getSurahList } from '../data-sources/data-sources';
+import { getSurahList } from '../../data-sources/data-sources';
 
-import Header from "../components/header/header";
-import SurahList from '../components/surah-list/SurahList';
+import Header from "../../components/header/Header";
+import SurahList from '../../components/surah-list/SurahList';
 
 export const getStaticProps = async () => {
   const surahList = await getSurahList();
