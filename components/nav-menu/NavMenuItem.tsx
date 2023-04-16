@@ -1,9 +1,16 @@
-import Link from "next/link";
-import { useContext } from "react";
-import { DispatchContext } from "../../state/Store";
-import { toggleNav } from "../../state/actions";
+import Link from 'next/link';
+import { useContext } from 'react';
 
-const NavMenuItem = ({ navUrl, buttonName, icon }) => {
+import { toggleNav } from '../../state/actions';
+import { DispatchContext } from '../../state/Store';
+
+interface NavMenuItemProps {
+  navUrl: any;
+  buttonName: any;
+  icon: any;
+}
+
+const NavMenuItem = ({ navUrl, buttonName, icon }: NavMenuItemProps) => {
   const dispatch = useContext(DispatchContext);
 
   return (
@@ -11,10 +18,10 @@ const NavMenuItem = ({ navUrl, buttonName, icon }) => {
       <Link href={navUrl}>
         <a
           onClick={() => dispatch(toggleNav())}
-          className="flex items-center w-full p-3"
+          className="flex w-full items-center p-3"
         >
           {icon}
-          <span className="leading-none text-lg ml-2">{buttonName}</span>
+          <span className="ml-2 text-lg leading-none">{buttonName}</span>
         </a>
       </Link>
     </li>

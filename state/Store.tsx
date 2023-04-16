@@ -1,13 +1,15 @@
-import { createContext, useReducer } from "react";
-import reducer from "./reducer";
+import type { ReactNode } from 'react';
+import React, { useReducer } from 'react';
+
+import reducer from './reducer';
 
 const INITIAL_STATE = {
   surahList: [],
   tafsirList: [],
-  currentMurottal: "",
+  currentMurottal: '',
   currentPlaySurahData: {
-    surah: "",
-    reciter: "",
+    surah: '',
+    reciter: '',
   },
   currentAyatNumberList: [],
   isDaftarAyatShow: false,
@@ -17,12 +19,16 @@ const INITIAL_STATE = {
   error: null,
 };
 
-export const GlobalContext = createContext(INITIAL_STATE);
-export const DispatchContext = createContext(null);
+export const GlobalContext = React.createContext<any>(INITIAL_STATE);
+export const DispatchContext = React.createContext<any>(null);
 
-export default function Store({ children }) {
+interface StoreProps {
+  children: ReactNode;
+}
+
+export default function Store({ children }: StoreProps) {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-  
+
   return (
     <GlobalContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>

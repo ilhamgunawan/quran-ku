@@ -1,21 +1,24 @@
-import Head from "next/head";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/footer";
-import AyatListItem from "../../components/ayat-list/ayat-list-item";
-import { useEffect, useContext } from "react";
-import { mapAyatObjectToArray, getAyatNumberList } from "../../utils/utils";
+/* eslint-disable @typescript-eslint/naming-convention */
+import type { GetStaticProps } from 'next';
+import Head from 'next/head';
+import React, { useContext, useEffect } from 'react';
+
+import AyatListItem from '../../components/ayat-list/ayat-list-item';
+import Footer from '../../components/footer/footer';
+import Header from '../../components/header/Header';
 import {
-  getSurahNameAndAyat,
   getAllSurahId,
-  getSurah,
   getMurottalUrl,
-} from "../../data-sources/data-sources";
-import { GlobalContext, DispatchContext } from "../../state/Store";
+  getSurah,
+  getSurahNameAndAyat,
+} from '../../data-sources/data-sources';
 import {
-  setCurrentMurottal,
   murottalAudioToggle,
   setCurrentAyatNumberList,
-} from "../../state/actions";
+  setCurrentMurottal,
+} from '../../state/actions';
+import { DispatchContext, GlobalContext } from '../../state/Store';
+import { getAyatNumberList, mapAyatObjectToArray } from '../../utils/utils';
 
 export const getStaticPaths = async () => {
   const paths = await getAllSurahId();
@@ -25,15 +28,15 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
-  const { nextName, previousName } = await getSurahNameAndAyat(params.id);
-  const murottalUrl = await getMurottalUrl(params.id);
-  const surahData = await getSurah(params.id);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { nextName, previousName } = await getSurahNameAndAyat(params?.id);
+  const murottalUrl = await getMurottalUrl(params?.id);
+  const surahData = await getSurah(params?.id);
 
   return {
     props: {
       surahData,
-      surahId: params.id,
+      surahId: params?.id,
       nextName,
       previousName,
       murottalUrl,
@@ -41,22 +44,30 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
+interface SurahDetailProps {
+  surahData: any;
+  surahId: any;
+  murottalUrl: any;
+  nextName: any;
+  previousName: any;
+}
+
 const SurahDetail = ({
   surahData,
   surahId,
   murottalUrl,
   nextName,
   previousName,
-}) => {
+}: SurahDetailProps) => {
   const state = useContext(GlobalContext);
   const dispatch = useContext(DispatchContext);
-  const { currentMurottal, isMurottalPlaying, isLoading } = state;
+  const { currentMurottal, isMurottalPlaying } = state;
 
   const { text, translations, number, name_latin, number_of_ayah } = surahData;
 
   const versesArray = mapAyatObjectToArray(text, translations.id.text);
 
-  const setAyatList = (verses) => {
+  const setAyatList = (verses: any) => {
     dispatch(setCurrentAyatNumberList(getAyatNumberList(verses)));
   };
 
@@ -75,17 +86,20 @@ const SurahDetail = ({
   return (
     <>
       <Head>
-        <title>Qur'an Surat {name_latin ? name_latin : ""} | Qur'anKu</title>
+        <title>
+          {"Qur'an Surat "} {name_latin || ''}
+          {" | Qur'anKu"}
+        </title>
         <link rel="preload" href="/fonts/LPMQ.ttf" as="font" crossOrigin="" />
       </Head>
 
       <Header
         pageTitle={
-          name_latin ? `${name_latin} | ${number_of_ayah} ayat` : "Loading..."
+          name_latin ? `${name_latin} | ${number_of_ayah} ayat` : 'Loading...'
         }
       />
       <main
-        style={{ width: "95%", marginLeft: "auto", marginRight: "auto" }}
+        style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }}
         className="my-16"
       >
         <ul>
@@ -96,7 +110,7 @@ const SurahDetail = ({
                   بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
                 </p>
               </div>
-              <p className="mt-10 text-gray-700 leading-relaxed text-justify">
+              <p className="mt-10 text-justify leading-relaxed text-gray-700">
                 Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.
               </p>
             </div>
@@ -114,8 +128,8 @@ const SurahDetail = ({
       </main>
       {number ? (
         <Footer
-          previousId={(parseInt(number) - 1).toString()}
-          nextId={(parseInt(number) + 1).toString()}
+          previousId={(parseInt(number, 10) - 1).toString()}
+          nextId={(parseInt(number, 10) + 1).toString()}
           previousName={previousName}
           nextName={nextName}
         />

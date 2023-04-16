@@ -1,19 +1,19 @@
-import BookmarkBorderIcon from "../../assets/icons/bookmark-border-icon";
-import QuranIcon2 from "../../assets/icons/quran-2-icon";
+import BookmarkBorderIcon from '../../assets/icons/bookmark-border-icon';
+import QuranIcon2 from '../../assets/icons/quran-2-icon';
 
 const BookmarkEmpty = () => {
   return (
-    <div className="flex flex-col items-center mt-10">
+    <div className="mt-10 flex flex-col items-center">
       <QuranIcon2 />
-      <p className="text-gray-800 font-semibold">
+      <p className="font-semibold text-gray-800">
         Daftar penanda ayat masih kosong
       </p>
-      <div className="flex flex-wrap justify-center items-center">
-        <p className="text-gray-800 font-semibold">
+      <div className="flex flex-wrap items-center justify-center">
+        <p className="font-semibold text-gray-800">
           Simpan ayat ke daftar penanda
         </p>
-        <div className="flex text-center justify-center items-center ml-1">
-          <span className="text-gray-800 font-semibold">
+        <div className="ml-1 flex items-center justify-center text-center">
+          <span className="font-semibold text-gray-800">
             dengan menekan tombol <span className="inline-block"></span>
           </span>
           <BookmarkBorderIcon />

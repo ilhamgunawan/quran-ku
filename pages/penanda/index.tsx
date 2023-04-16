@@ -1,10 +1,10 @@
-import Head from "next/head";
-import { useState, useEffect } from "react";
-import { getAllAyat } from "../../bookmark-utils/bookmark-utils";
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
 
-import Header from "../../components/header/Header";
-import BookmarkItem from "../../components/bookmark/bookmark-item";
-import BookmarkEmpty from "../../components/bookmark/bookmark-empty";
+import { getAllAyat } from '../../bookmark-utils/bookmark-utils';
+import BookmarkEmpty from '../../components/bookmark/bookmark-empty';
+import BookmarkItem from '../../components/bookmark/bookmark-item';
+import Header from '../../components/header/Header';
 
 const Penanda = () => {
   const [isBookmarkExist, setBookmarkExist] = useState(false);
@@ -18,11 +18,11 @@ const Penanda = () => {
   return (
     <>
       <Head>
-        <title>Daftar Penanda | Qur'anKu</title>
+        <title>{"Daftar Penanda | Qur'anKu"}</title>
       </Head>
       <Header pageTitle="Qur'anKu | Penanda" />
       <main
-        style={{ width: "95%", margin: "5rem auto" }}
+        style={{ width: '95%', margin: '5rem auto' }}
         className="flex flex-col items-center"
       >
         {isBookmarkExist ? (

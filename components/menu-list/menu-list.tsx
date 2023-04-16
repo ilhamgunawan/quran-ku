@@ -1,13 +1,13 @@
-import MenuListItem from "./menu-list-item";
-import QuranIcon from "../../assets/icons/quran-icon";
-import QuranBookIcon from "../../assets/icons/quran-book-icon";
-import ArabManIcon from "../../assets/icons/arab-man-icon";
-import InfoIcon from "../../assets/icons/info-icon";
-import BookmarkIcon from "../../assets/icons/bookmark-icon";
+import ArabManIcon from '../../assets/icons/arab-man-icon';
+import BookmarkIcon from '../../assets/icons/bookmark-icon';
+import InfoIcon from '../../assets/icons/info-icon';
+import QuranBookIcon from '../../assets/icons/quran-book-icon';
+import QuranIcon from '../../assets/icons/quran-icon';
+import MenuListItem from './menu-list-item';
 
 const MenuList = () => {
   return (
-    <ul className="flex flex-col items-center h-48 w-full">
+    <ul className="flex h-48 w-full flex-col items-center">
       <MenuListItem
         navigateLink="/surat"
         buttonName="Baca Al-Qur'an"

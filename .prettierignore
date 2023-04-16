@@ -1,9 +1,0 @@
-# Ignore artifacts:
-
-node_modules
-.next
-out
-.vercel
-public
-package.json
-package-lock.json

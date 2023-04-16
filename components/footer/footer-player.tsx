@@ -1,6 +1,7 @@
-import Head from "next/head";
-import { useContext } from "react";
-import { GlobalContext } from "../../state/Store";
+import Head from 'next/head';
+import { useContext } from 'react';
+
+import { GlobalContext } from '../../state/Store';
 
 const FooterPlayer = () => {
   const state = useContext(GlobalContext);
@@ -16,23 +17,22 @@ const FooterPlayer = () => {
             : "Murottal | Qur'anKu"}
         </title>
       </Head>
-      <footer className="w-full fixed bottom-0 inset-x-0 flex bg-gray-900">
-        <div className="w-full flex-col footer-player">
-          <p className="text-white font-semibold text-center my-2">
+      <footer className="fixed inset-x-0 bottom-0 flex w-full bg-gray-900">
+        <div className="footer-player w-full flex-col">
+          <p className="my-2 text-center font-semibold text-white">
             {surah
               ? `${reciter} - ${surah}`
-              : "Mishari Rashid al-`Afasy - Al Fatihah"}
+              : 'Mishari Rashid al-`Afasy - Al Fatihah'}
           </p>
           <audio
             controls
             id="audio-player"
-            className="w-11/12 h-10 outline-none my-2 mx-auto"
+            className="mx-auto my-2 h-10 w-11/12 outline-none"
           >
             <source
               src={
-                currentMurottal
-                  ? currentMurottal
-                  : "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/001.mp3"
+                currentMurottal ||
+                'https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/001.mp3'
               }
               type="audio/mpeg"
             />

@@ -1,73 +1,89 @@
-import Link from "next/link";
-import { useContext } from "react";
-import { GlobalContext, DispatchContext } from "../../state/Store";
-import { setDaftarAyatToggle } from "../../state/actions";
+import Link from 'next/link';
+import React, { useContext } from 'react';
 
-import NextIcon from "../../assets/icons/next-icon";
-import PreviousIcon from "../../assets/icons/previous-icon";
-import ListIcon from "../../assets/icons/list-icon";
-import DaftarAyat from "./daftar-ayat";
+import ListIcon from '../../assets/icons/list-icon';
+import NextIcon from '../../assets/icons/next-icon';
+import PreviousIcon from '../../assets/icons/previous-icon';
+import { setDaftarAyatToggle } from '../../state/actions';
+import { DispatchContext, GlobalContext } from '../../state/Store';
+import DaftarAyat from './daftar-ayat';
 
-const FooterTafsir = ({ previousId, nextId, previousName, nextName }) => {
+interface FooterTafsirProps {
+  previousId: any;
+  nextId: any;
+  previousName: any;
+  nextName: any;
+}
+
+const FooterTafsir = ({
+  previousId,
+  nextId,
+  previousName,
+  nextName,
+}: FooterTafsirProps) => {
   const state = useContext(GlobalContext);
   const dispatch = useContext(DispatchContext);
   const { isDaftarAyatShow } = state;
 
-  if (nextId == "115") {
+  // eslint-disable-next-line eqeqeq
+  if (nextId == '115') {
+    // eslint-disable-next-line no-param-reassign
     nextId = null;
-  } else if (previousId == "0") {
+    // eslint-disable-next-line eqeqeq
+  } else if (previousId == '0') {
+    // eslint-disable-next-line no-param-reassign
     previousId = null;
   }
 
   return (
-    <footer className="w-full fixed bottom-0 inset-x-0 flex bg-gray-900">
-      <div className="w-full flex footer-buttons">
+    <footer className="fixed inset-x-0 bottom-0 flex w-full bg-gray-900">
+      <div className="footer-buttons flex w-full">
         {previousId ? (
           <Link href={`/tafsir/${previousId}`}>
-            <button className="w-full flex flex-col items-center bg-gray-900 p-1 focus:outline-none">
+            <button className="flex w-full flex-col items-center bg-gray-900 p-1 focus:outline-none">
               <span>
                 <PreviousIcon />
               </span>
-              <span className="text-white font-light text-xs">
+              <span className="text-xs font-light text-white">
                 {previousName}
               </span>
             </button>
           </Link>
         ) : (
-          <button className="w-full flex flex-col items-center bg-gray-900 p-1 focus:outline-none">
+          <button className="flex w-full flex-col items-center bg-gray-900 p-1 focus:outline-none">
             <span>
               <PreviousIcon />
             </span>
-            <span className="text-white font-light text-xs"></span>
+            <span className="text-xs font-light text-white"></span>
           </button>
         )}
-        <div style={{ position: "relative" }} className="w-full">
+        <div style={{ position: 'relative' }} className="w-full">
           <button
-            className="w-full flex flex-col items-center bg-gray-900 p-1 focus:outline-none"
+            className="flex w-full flex-col items-center bg-gray-900 p-1 focus:outline-none"
             onClick={() => dispatch(setDaftarAyatToggle())}
           >
             <span>
               <ListIcon />
             </span>
-            <span className="text-white font-light text-xs">Daftar Ayat</span>
+            <span className="text-xs font-light text-white">Daftar Ayat</span>
           </button>
           {isDaftarAyatShow ? <DaftarAyat /> : null}
         </div>
         {nextId ? (
           <Link href={`/tafsir/${nextId}`}>
-            <button className="w-full flex flex-col items-center bg-gray-900 p-1 focus:outline-none">
+            <button className="flex w-full flex-col items-center bg-gray-900 p-1 focus:outline-none">
               <span>
                 <NextIcon />
               </span>
-              <span className="text-white font-light text-xs">{nextName}</span>
+              <span className="text-xs font-light text-white">{nextName}</span>
             </button>
           </Link>
         ) : (
-          <button className="w-full flex flex-col items-center bg-gray-900 p-1 focus:outline-none">
+          <button className="flex w-full flex-col items-center bg-gray-900 p-1 focus:outline-none">
             <span>
               <NextIcon />
             </span>
-            <span className="text-white font-light text-xs"></span>
+            <span className="text-xs font-light text-white"></span>
           </button>
         )}
       </div>

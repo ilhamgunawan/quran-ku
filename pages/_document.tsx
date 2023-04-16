@@ -1,4 +1,6 @@
-import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
+/* eslint-disable class-methods-use-this */
+import type { DocumentContext } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

@@ -1,7 +1,18 @@
-import Link from "next/link";
-import { customButtonTeal } from "../button";
+import Link from 'next/link';
 
-const MenuListItem = ({ navigateLink, buttonName, icon }) => {
+import { customButtonTeal } from '../button';
+
+interface MenuListItemProps {
+  navigateLink: any;
+  buttonName: any;
+  icon: any;
+}
+
+const MenuListItem = ({
+  navigateLink,
+  buttonName,
+  icon,
+}: MenuListItemProps) => {
   return (
     <li className="w-full">
       <Link href={navigateLink}>

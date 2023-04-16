@@ -1,12 +1,21 @@
-import { useState, useEffect } from "react";
-import { getArabicNumber, getDateInIndonesia } from "../../utils/utils";
+import React, { useEffect, useState } from 'react';
+
+import BookmarkBorderIcon from '../../assets/icons/bookmark-border-icon';
+import BookmarkIcon from '../../assets/icons/bookmark-icon';
 import {
-  storeAyat,
-  removeAyat,
   getAyat,
-} from "../../bookmark-utils/bookmark-utils";
-import BookmarkIcon from "../../assets/icons/bookmark-icon";
-import BookmarkBorderIcon from "../../assets/icons/bookmark-border-icon";
+  removeAyat,
+  storeAyat,
+} from '../../bookmark-utils/bookmark-utils';
+import { getArabicNumber, getDateInIndonesia } from '../../utils/utils';
+
+interface AyatListItemProps {
+  surahName: any;
+  surahId: any;
+  ayatNumber: any;
+  arabic: any;
+  translations: any;
+}
 
 const AyatListItem = ({
   surahName,
@@ -14,36 +23,37 @@ const AyatListItem = ({
   ayatNumber,
   arabic,
   translations,
-}) => {
+}: AyatListItemProps) => {
   const [isAyatBookmarked, setAyatBookmarked] = useState(false);
 
   const [bookmarkNotif, setBookmarkNotif] = useState({
-    message: "",
+    message: '',
     display: false,
   });
 
-  const [ayatKey, setAyatKey] = useState(`${surahName}-${ayatNumber}`);
+  const [ayatKey] = useState(`${surahName}-${ayatNumber}`);
 
   const onClickStoreAyat = () => {
     storeAyat(ayatKey, {
       id: ayatKey,
       date: getDateInIndonesia(),
-      surahName: surahName,
-      ayatNumber: ayatNumber,
+      surahName,
+      ayatNumber,
       url: `/surat/${surahId}#${ayatNumber}`,
     });
     setAyatBookmarked(true);
 
+    // eslint-disable-next-line no-console
     console.log(getAyat(ayatKey));
 
     setBookmarkNotif({
-      message: "Ayat disimpan di penanda",
+      message: 'Ayat disimpan di penanda',
       display: true,
     });
 
     setTimeout(() => {
       setBookmarkNotif({
-        message: "",
+        message: '',
         display: false,
       });
     }, 2000);
@@ -53,16 +63,17 @@ const AyatListItem = ({
     removeAyat(ayatKey);
     setAyatBookmarked(false);
 
+    // eslint-disable-next-line no-console
     console.log(getAyat(ayatKey));
 
     setBookmarkNotif({
-      message: "Ayat dihapus dari penanda",
+      message: 'Ayat dihapus dari penanda',
       display: true,
     });
 
     setTimeout(() => {
       setBookmarkNotif({
-        message: "",
+        message: '',
         display: false,
       });
     }, 2000);
@@ -80,8 +91,8 @@ const AyatListItem = ({
       <div className="flex flex-col">
         <div className="grid">
           <p
-            style={{ color: "white" }}
-            className="arabic-text col-start-1 h-10 w-10 mt-auto mb-6 text-2xl leading-none bg-blue-300 text-white flex justify-center items-center rounded-full"
+            style={{ color: 'white' }}
+            className="arabic-text col-start-1 mb-6 mt-auto flex h-10 w-10 items-center justify-center rounded-full bg-blue-300 text-2xl leading-none text-white"
           >
             {getArabicNumber(ayatNumber)}
           </p>
@@ -97,9 +108,9 @@ const AyatListItem = ({
             <button
               aria-label={`Hapus penanda ${surahName} ayat ${ayatNumber}`}
               style={{
-                width: "fit-content",
+                width: 'fit-content',
               }}
-              className="bookmark-button flex focus:outline-none p-1 rounded-full"
+              className="bookmark-button flex rounded-full p-1 focus:outline-none"
               onClick={onClickRemoveAyat}
             >
               <BookmarkIcon />
@@ -108,23 +119,23 @@ const AyatListItem = ({
             <button
               aria-label={`Penanda ${surahName} ayat ${ayatNumber}`}
               style={{
-                width: "fit-content",
+                width: 'fit-content',
               }}
-              className="bookmark-button flex focus:outline-none p-1 rounded-full"
+              className="bookmark-button flex rounded-full p-1 focus:outline-none"
               onClick={onClickStoreAyat}
             >
               <BookmarkBorderIcon />
             </button>
           )}
           {bookmarkNotif.display ? (
-            <p className="text-xs text-yellow-800 bg-orange-200 p-1 rounded">
+            <p className="rounded bg-orange-200 p-1 text-xs text-yellow-800">
               {bookmarkNotif.message}
             </p>
           ) : null}
         </div>
         <p
           lang="id"
-          className="mt-10 text-gray-700 leading-relaxed text-justify"
+          className="mt-10 text-justify leading-relaxed text-gray-700"
         >
           {translations}
         </p>
