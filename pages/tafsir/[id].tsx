@@ -1,18 +1,18 @@
-import Head from "next/head";
-import { useContext, useEffect } from "react";
+import type { GetStaticProps } from 'next';
+import Head from 'next/head';
+import React, { useContext, useEffect } from 'react';
 
-import { DispatchContext } from "../../state/Store";
-import { setCurrentAyatNumberList } from "../../state/actions";
-import { mapTafsirObjectToArray, getAyatNumberList } from "../../utils/utils";
+import AyatTafsirListItem from '../../components/ayat-list/ayat-tafsir-list-item';
+import FooterTafsir from '../../components/footer/footer-tafsir';
+import Header from '../../components/header/Header';
 import {
   getAllSurahIdUnfiltered,
   getSurahNameAndAyat,
   getTafsir,
-} from "../../data-sources/data-sources";
-
-import Header from "../../components/header/Header";
-import FooterTafsir from "../../components/footer/footer-tafsir";
-import AyatTafsirListItem from "../../components/ayat-list/ayat-tafsir-list-item";
+} from '../../data-sources/data-sources';
+import { setCurrentAyatNumberList } from '../../state/actions';
+import { DispatchContext } from '../../state/Store';
+import { getAyatNumberList, mapTafsirObjectToArray } from '../../utils/utils';
 
 export const getStaticPaths = async () => {
   const paths = await getAllSurahIdUnfiltered();
@@ -22,14 +22,14 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
-  const { nextName, previousName } = await getSurahNameAndAyat(params.id);
-  const { name, tafsir, source } = await getTafsir(params.id);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { nextName, previousName } = await getSurahNameAndAyat(params?.id);
+  const { name, tafsir, source } = await getTafsir(params?.id);
 
   return {
     props: {
       name,
-      surahId: params.id,
+      surahId: params?.id,
       tafsir,
       source,
       nextName,
@@ -38,6 +38,15 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
+interface TafsirDetailProps {
+  surahId: any;
+  tafsir: any;
+  name: any;
+  source: any;
+  nextName: any;
+  previousName: any;
+}
+
 const TafsirDetail = ({
   surahId,
   tafsir,
@@ -45,7 +54,7 @@ const TafsirDetail = ({
   source,
   nextName,
   previousName,
-}) => {
+}: TafsirDetailProps) => {
   const tafsirArray = mapTafsirObjectToArray(tafsir);
   const dispatch = useContext(DispatchContext);
 
@@ -56,15 +65,19 @@ const TafsirDetail = ({
   return (
     <>
       <Head>
-        <title>Tafsir Qur'an Surat {name} | Qur'anKu</title>
+        <title>
+          {"Tafsir Qur'an Surat "}
+          {name}
+          {" | Qur'anKu"}
+        </title>
       </Head>
       <Header pageTitle={`Tafsir Surat ${name}`} />
       <main
-        style={{ width: "95%", marginLeft: "auto", marginRight: "auto" }}
+        style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }}
         className="my-16"
       >
-        <section className="bg-orange-200 p-4 mb-4 rounded-lg">
-          <p className="text-yellow-800 leading-loose">
+        <section className="mb-4 rounded-lg bg-orange-200 p-4">
+          <p className="leading-loose text-yellow-800">
             <strong>Catatan</strong>: Tafsir Quran Surat {name} berdasarkan
             sumber dari {source}
           </p>
@@ -77,8 +90,8 @@ const TafsirDetail = ({
       </main>
       {surahId ? (
         <FooterTafsir
-          previousId={(parseInt(surahId) - 1).toString()}
-          nextId={(parseInt(surahId) + 1).toString()}
+          previousId={(parseInt(surahId, 10) - 1).toString()}
+          nextId={(parseInt(surahId, 10) + 1).toString()}
           previousName={previousName}
           nextName={nextName}
         />

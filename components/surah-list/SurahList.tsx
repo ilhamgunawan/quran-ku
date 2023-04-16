@@ -1,15 +1,17 @@
-import SurahListItem from "./SurahListItem";
-import { useState, ChangeEvent } from "react";
-import type { SurahItem } from "../../types/surah";
+import type { ChangeEvent } from 'react';
+import { useState } from 'react';
+
+import type { SurahItem } from '../../types/surah';
+import SurahListItem from './SurahListItem';
 
 export type Props = {
-	surahList: SurahItem[],
-	surahItemLinkPrefix: string,
+  surahList: SurahItem[];
+  surahItemLinkPrefix: string;
 };
 
 export default function SurahList({ surahList, surahItemLinkPrefix }: Props) {
   const [filteredSurahList, setFilteredSurahList] = useState(surahList);
-	const isSearchResultEmpty = filteredSurahList.length === 0;
+  const isSearchResultEmpty = filteredSurahList.length === 0;
 
   const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchValueLoweredCase = event.target.value.toLowerCase();
@@ -18,18 +20,18 @@ export default function SurahList({ surahList, surahItemLinkPrefix }: Props) {
       return surahNameLoweredCase.includes(searchValueLoweredCase);
     });
 
-		setFilteredSurahList(filteredSearch);
+    setFilteredSurahList(filteredSearch);
   };
 
   return (
     <main
-      style={{ width: "95%", marginLeft: "auto", marginRight: "auto" }}
+      style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }}
       className="my-16"
     >
       <input
         type="search"
         placeholder="Pencarian surat, contoh: Al Fatihah"
-        className="w-full my-2 p-4 h-16 border-2 border-teal-400 rounded outline-none"
+        className="my-2 h-16 w-full rounded border-2 border-teal-400 p-4 outline-none"
         onChange={onInputChange}
       />
       {isSearchResultEmpty ? (
@@ -37,13 +39,13 @@ export default function SurahList({ surahList, surahItemLinkPrefix }: Props) {
           Maaf, pencarian tidak ditemukan
         </p>
       ) : (
-        <ul className="w-full flex flex-col items-center">
+        <ul className="flex w-full flex-col items-center">
           {filteredSurahList.map((surah) => (
-            <SurahListItem 
-							key={surah.nomor} 
-							surahItem={surah} 
-							surahItemLinkPrefix={surahItemLinkPrefix} 
-						/>
+            <SurahListItem
+              key={surah.nomor}
+              surahItem={surah}
+              surahItemLinkPrefix={surahItemLinkPrefix}
+            />
           ))}
         </ul>
       )}

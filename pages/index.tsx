@@ -1,7 +1,7 @@
-import Header from "../components/header/Header";
-import MosqueLogo from "../assets/images/nabawi-mosque";
-import MenuList from "../components/menu-list/menu-list";
-import BasicMeta from "../components/meta/basic-meta";
+import MosqueLogo from '../assets/images/nabawi-mosque';
+import Header from '../components/header/Header';
+import MenuList from '../components/menu-list/menu-list';
+import BasicMeta from '../components/meta/basic-meta';
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <BasicMeta />
       <Header pageTitle="QuranKu | Beranda" />
       <main
-        style={{ width: "95%", margin: "7.5rem auto" }}
+        style={{ width: '95%', margin: '7.5rem auto' }}
         className="flex flex-col items-center"
       >
         <div className="home-logo-container">
@@ -19,4 +19,4 @@ export default function Home() {
       </main>
     </>
   );
-};
+}

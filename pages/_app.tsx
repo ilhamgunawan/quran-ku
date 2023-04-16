@@ -1,8 +1,10 @@
-import "../styles/globals.css";
-import "../styles/tailwind.css";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import Store from "../state/Store";
-import { AppProps } from "next/app";
+import '../styles/globals.css';
+import '../styles/tailwind.css';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
+import type { AppProps } from 'next/app';
+
+import Store from '../state/Store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

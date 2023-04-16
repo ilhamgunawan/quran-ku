@@ -1,9 +1,9 @@
-import Head from "next/head";
+import Head from 'next/head';
+import React from 'react';
 
-import { getSurahList } from '../../data-sources/data-sources';
-
-import Header from "../../components/header/Header";
+import Header from '../../components/header/Header';
 import SurahList from '../../components/surah-list/SurahList';
+import { getSurahList } from '../../data-sources/data-sources';
 
 export const getStaticProps = async () => {
   const surahList = await getSurahList();
@@ -11,18 +11,22 @@ export const getStaticProps = async () => {
   return {
     props: {
       surahList,
-    }
+    },
   };
 };
 
-const TafsirListPage = ({ surahList }) => {
+interface TafsirListPageProps {
+  surahList: any;
+}
+
+const TafsirListPage = ({ surahList }: TafsirListPageProps) => {
   return (
     <>
       <Head>
-        <title>Tafsir | Qur'anKu</title>
+        <title>{"Tafsir | Qur'anKu"}</title>
       </Head>
       <Header pageTitle="Qur'anKu | Tafsir" />
-      <SurahList surahList={surahList} surahItemLinkPrefix='tafsir' />
+      <SurahList surahList={surahList} surahItemLinkPrefix="tafsir" />
     </>
   );
 };

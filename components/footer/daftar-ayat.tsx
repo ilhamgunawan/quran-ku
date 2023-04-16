@@ -1,5 +1,6 @@
-import { useContext } from "react";
-import { GlobalContext } from "../../state/Store";
+import { useContext } from 'react';
+
+import { GlobalContext } from '../../state/Store';
 
 export default function DaftarAyat() {
   const state = useContext(GlobalContext);
@@ -8,24 +9,24 @@ export default function DaftarAyat() {
   return (
     <div
       style={{
-        position: "absolute",
-        bottom: "3.6rem",
-        overflowY: "scroll",
-        left: "50%",
-        right: "50%",
-        marginLeft: "-40px",
+        position: 'absolute',
+        bottom: '3.6rem',
+        overflowY: 'scroll',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-40px',
       }}
-      className="h-64 w-20 shadow-lg border-r-2 bg-gray-700 flex flex-col"
+      className="flex h-64 w-20 flex-col border-r-2 bg-gray-700 shadow-lg"
     >
       {currentAyatNumberList
-        ? currentAyatNumberList.map(({ ayatNumber }) => {
+        ? currentAyatNumberList.map((item: any) => {
             return (
               <a
-                key={ayatNumber}
-                className="w-full hover:bg-teal-400 text-left py-1 pl-2 hover:text-gray-700 text-gray-300"
-                href={`#${ayatNumber}`}
+                key={item.ayatNumber}
+                className="w-full py-1 pl-2 text-left text-gray-300 hover:bg-teal-400 hover:text-gray-700"
+                href={`#${item.ayatNumber}`}
               >
-                {ayatNumber}
+                {item.ayatNumber}
               </a>
             );
           })

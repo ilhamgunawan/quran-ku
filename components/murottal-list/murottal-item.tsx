@@ -1,16 +1,23 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from 'react';
 
-import { getMurottalAllUrl } from "../../data-sources/data-sources";
+import { getMurottalAllUrl } from '../../data-sources/data-sources';
+import { customButtonLessHover } from '../button';
+import CloseButton from './close-button';
+import PlayButton from './play-button';
 
-import { customButtonLessHover } from "../button";
-import PlayButton from "./play-button";
-import CloseButton from "./close-button";
+interface MurottalItemProps {
+  nama: any;
+  nomor: any;
+  arti: any;
+  asma: any;
+  ayat: any;
+}
 
-const MurottalItem = ({ nama, nomor, arti, asma, ayat }) => {
+const MurottalItem = ({ nama, nomor, arti, asma, ayat }: MurottalItemProps) => {
   const [expand, setExpand] = useState(false);
 
   const [murottalData, setMurottalData] = useState({
-    name: "",
+    name: '',
     recitations: [],
   });
 
@@ -34,37 +41,37 @@ const MurottalItem = ({ nama, nomor, arti, asma, ayat }) => {
   }, []);
 
   return (
-    <li style={{ position: "relative" }} className="w-full">
+    <li style={{ position: 'relative' }} className="w-full">
       <div
         className={customButtonLessHover}
         style={{
-          cursor: "pointer",
+          cursor: 'pointer',
         }}
         onClick={onClickExpand}
       >
-        <div className="w-full flex justify-between">
+        <div className="flex w-full justify-between">
           <div className="flex items-center justify-between">
-            <span className="mr-5 h-8 w-8 text-xs font-semibold leading-none bg-blue-300 text-white flex justify-center items-center rounded-full">
+            <span className="mr-5 flex h-8 w-8 items-center justify-center rounded-full bg-blue-300 text-xs font-semibold leading-none text-white">
               {nomor}
             </span>
             <div className="flex flex-col">
               <span className="text-left">{nama}</span>
-              <span className="text-left text-gray-700 font-light">{arti}</span>
+              <span className="text-left font-light text-gray-700">{arti}</span>
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-normal text-right text-2xl leading-none pb-1">
+            <span className="pb-1 text-right text-2xl font-normal leading-none">
               {asma}
             </span>
-            <span className="font-light text-right text-gray-700 leading-none pb-1">
+            <span className="pb-1 text-right font-light leading-none text-gray-700">
               {ayat} ayat
             </span>
           </div>
         </div>
         {expand ? (
           <div
-            style={{ position: "relative" }}
-            className="w-full flex flex-col items-center mt-4"
+            style={{ position: 'relative' }}
+            className="mt-4 flex w-full flex-col items-center"
           >
             {recitations.map((recitation, index) => (
               <PlayButton

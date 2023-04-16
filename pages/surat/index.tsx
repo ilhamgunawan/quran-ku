@@ -1,11 +1,13 @@
-import Head from "next/head";
-import Header from "../../components/header/Header";
-import SurahList from "../../components/surah-list/SurahList";
+import Head from 'next/head';
+import React from 'react';
+
+import Header from '../../components/header/Header';
+import SurahList from '../../components/surah-list/SurahList';
 import { getSurahList } from '../../data-sources/data-sources';
 import type { SurahItem } from '../../types/surah';
 
 export type Props = {
-  surahList: SurahItem[]
+  surahList: SurahItem[];
 };
 
 export const getStaticProps = async () => {
@@ -14,7 +16,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       surahList,
-    }
+    },
   };
 };
 
@@ -22,10 +24,10 @@ export default function SuratListPage(props: Props) {
   return (
     <>
       <Head>
-        <title>Baca Al-Qur'an | Qur'anKu</title>
+        <title>{"Baca Al-Qur'an | Qur'anKu"}</title>
       </Head>
       <Header pageTitle="Qur'anKu | Daftar Surat" />
-      <SurahList surahList={props.surahList} surahItemLinkPrefix='surat' />
+      <SurahList surahList={props.surahList} surahItemLinkPrefix="surat" />
     </>
   );
 }

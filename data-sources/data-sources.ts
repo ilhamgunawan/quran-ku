@@ -1,6 +1,6 @@
 const BASE_URL = {
-  SURAH_LIST_URL: "https://api.npoint.io/99c279bb173a6e28359c/data",
-  SURAH_DETAIL_URL: "https://quran-json-private.web.app/surah",
+  SURAH_LIST_URL: 'https://api.npoint.io/99c279bb173a6e28359c/data',
+  SURAH_DETAIL_URL: 'https://quran-json-private.web.app/surah',
 };
 
 export const getSurahList = async () => {
@@ -9,13 +9,13 @@ export const getSurahList = async () => {
   return surahList;
 };
 
-export const getSurah = async (surahId) => {
+export const getSurah = async (surahId: any) => {
   const response = await fetch(`${BASE_URL.SURAH_DETAIL_URL}/${surahId}.json`);
   const surahDetails = await response.json();
   return surahDetails[surahId];
 };
 
-export const getTafsir = async (surahId) => {
+export const getTafsir = async (surahId: any) => {
   const surah = await getSurah(surahId);
   return {
     name: surah.name_latin,
@@ -24,7 +24,7 @@ export const getTafsir = async (surahId) => {
   };
 };
 
-export const getMurottalUrl = async (surahId) => {
+export const getMurottalUrl = async (surahId: any) => {
   const response = await fetch(
     `https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/${surahId}.json`
   );
@@ -32,7 +32,7 @@ export const getMurottalUrl = async (surahId) => {
   return murottallUrl;
 };
 
-export const getMurottalAllUrl = async (surahId) => {
+export const getMurottalAllUrl = async (surahId: any) => {
   const response = await fetch(
     `https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/${surahId}.json`
   );
@@ -45,11 +45,11 @@ export const getMurottalAllUrl = async (surahId) => {
 
 export const getAllSurahId = async () => {
   const surahList = await getSurahList();
-  const filteredUnusedId = surahList.filter((surah) => {
-    return surah.nomor !== "1" && surah.nomor !== "114";
+  const filteredUnusedId = surahList.filter((surah: { nomor: string }) => {
+    return surah.nomor !== '1' && surah.nomor !== '114';
   });
 
-  return filteredUnusedId.map((surah) => {
+  return filteredUnusedId.map((surah: { nomor: any }) => {
     return {
       params: {
         id: surah.nomor,
@@ -61,7 +61,7 @@ export const getAllSurahId = async () => {
 export const getAllSurahIdUnfiltered = async () => {
   const surahList = await getSurahList();
 
-  return surahList.map((surah) => {
+  return surahList.map((surah: { nomor: any }) => {
     return {
       params: {
         id: surah.nomor,
@@ -70,7 +70,7 @@ export const getAllSurahIdUnfiltered = async () => {
   });
 };
 
-export const getSurahNameAndAyat = async (surahId) => {
+export const getSurahNameAndAyat = async (surahId: any) => {
   const surahList = await getSurahList();
 
   return {

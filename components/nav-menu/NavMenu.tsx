@@ -1,18 +1,18 @@
-import NavMenuItem from "./NavMenuItem";
-import HomeIcon from "../../assets/icons/home-icon";
-import QuranIcon from "../../assets/icons/quran-icon";
-import QuranBookIcon from "../../assets/icons/quran-book-icon";
-import ArabManIcon from "../../assets/icons/arab-man-icon";
-import InfoIcon from "../../assets/icons/info-icon";
-import BookmarkIcon from "../../assets/icons/bookmark-icon";
+import ArabManIcon from '../../assets/icons/arab-man-icon';
+import BookmarkIcon from '../../assets/icons/bookmark-icon';
+import HomeIcon from '../../assets/icons/home-icon';
+import InfoIcon from '../../assets/icons/info-icon';
+import QuranBookIcon from '../../assets/icons/quran-book-icon';
+import QuranIcon from '../../assets/icons/quran-icon';
+import NavMenuItem from './NavMenuItem';
 
 const NavMenu = () => {
   return (
     <ul
-      className="absolute w-48 p-2 rounded-md shadow-lg bg-white"
+      className="absolute w-48 rounded-md bg-white p-2 shadow-lg"
       style={{
-        top: "2.2rem",
-        right: "1.5rem",
+        top: '2.2rem',
+        right: '1.5rem',
       }}
     >
       <NavMenuItem navUrl="/" buttonName="Beranda" icon={<HomeIcon />} />
