@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
-import MenuIcon from '../../assets/icons/menu-icon';
+import MenuIcon from '@/components/MenuIcon';
+
 import { toggleNav } from '../../state/actions';
 import { DispatchContext } from '../../state/Store';
 

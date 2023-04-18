@@ -5,19 +5,16 @@ import NavMenu from '../nav-menu/NavMenu';
 import LeftButton from './LeftButton';
 import RightButton from './RightButton';
 
-export type Props = {
+interface HeaderProps {
   pageTitle: string;
-};
+}
 
-export default function Header({ pageTitle }: Props) {
+const Header = ({ pageTitle }: HeaderProps) => {
   const { isNavOpen } = useContext(GlobalContext);
 
   return (
-    <header
-      style={{ zIndex: '100' }}
-      className="fixed inset-x-0 top-0 bg-teal-400 px-2 py-1 shadow-xl"
-    >
-      <nav className="header-nav relative flex items-center justify-between">
+    <header className="fixed inset-x-0 top-0 z-50 bg-teal-400 shadow-xl">
+      <nav className="relative mx-auto flex items-center justify-between p-2 md:w-[64rem] md:px-4">
         <LeftButton pageTitle={pageTitle} />
         <h1 className="py-2 text-center text-xl font-bold text-white">
           {pageTitle}
@@ -27,4 +24,6 @@ export default function Header({ pageTitle }: Props) {
       </nav>
     </header>
   );
-}
+};
+
+export default Header;
