@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Header from '@/components/header/Header';
 import SadIcon from '@/components/SadIcon';
 
-export default function NotFoundPage() {
+const NotFoundPage = () => {
   return (
     <>
       <Head>
@@ -18,4 +18,6 @@ export default function NotFoundPage() {
       </main>
     </>
   );
-}
+};
+
+export default NotFoundPage;
