@@ -1,8 +1,15 @@
-const MenuIcon = () => {
+import clsx from 'clsx';
+
+interface MenuIconProps extends React.SVGAttributes<SVGAElement> {}
+
+const MenuIcon = (props: MenuIconProps) => {
   return (
     <>
       <svg
-        className="h-6 w-6 fill-current text-white"
+        className={clsx(
+          'h-6 w-6 fill-current text-white',
+          props.className || ''
+        )}
         version="1.1"
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"

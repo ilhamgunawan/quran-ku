@@ -1,16 +1,12 @@
-import { useContext } from 'react';
-
 import MenuIcon from '@/components/MenuIcon';
-
-import { toggleNav } from '../../state/actions';
-import { DispatchContext } from '../../state/Store';
+import { useMenuStore } from '@/stores/menu';
 
 export default function RightButton() {
-  const dispatch = useContext(DispatchContext);
+  const toggleHeaderMenu = useMenuStore((state) => state.toggleHeaderMenu);
 
   return (
     <button
-      onClick={() => dispatch(toggleNav())}
+      onClick={() => toggleHeaderMenu()}
       className="h-10 w-10 rounded-full pl-2 leading-none focus:outline-none"
       aria-label="Menu"
     >

@@ -1,4 +1,4 @@
-interface InfoIconProps {
+export interface InfoIconProps {
   fillColor?: string;
 }
 

@@ -1,7 +1,6 @@
-import { useContext } from 'react';
+import React from 'react';
 
-import { GlobalContext } from '../../state/Store';
-import NavMenu from '../nav-menu/NavMenu';
+import NavMenu from '../NavMenu/NavMenu';
 import LeftButton from './LeftButton';
 import RightButton from './RightButton';
 
@@ -10,7 +9,7 @@ interface HeaderProps {
 }
 
 const Header = ({ pageTitle }: HeaderProps) => {
-  const { isNavOpen } = useContext(GlobalContext);
+  const menuRef = React.useRef<HTMLDivElement>(null);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-teal-400 shadow-xl">
@@ -19,8 +18,10 @@ const Header = ({ pageTitle }: HeaderProps) => {
         <h1 className="py-2 text-center text-xl font-bold text-white">
           {pageTitle}
         </h1>
-        <RightButton />
-        {isNavOpen ? <NavMenu /> : null}
+        <div ref={menuRef}>
+          <RightButton />
+          <NavMenu menuRef={menuRef} />
+        </div>
       </nav>
     </header>
   );
