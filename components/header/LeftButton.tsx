@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import BackIcon from '../../assets/icons/back-icon';
-import InfoIcon from '../../assets/icons/info-icon';
+import BackIcon from '@/components/BackIcon';
+import InfoIcon from '@/components/InfoIcon';
 
 export type Props = {
   pageTitle: string;
@@ -39,7 +39,7 @@ export default function LeftButton({ pageTitle }: Props) {
           className="flex h-10 w-10 items-center justify-center rounded-full focus:outline-none"
           aria-label="Tentang"
         >
-          <InfoIcon fillColor={null} />
+          <InfoIcon />
         </button>
       </Link>
     );
