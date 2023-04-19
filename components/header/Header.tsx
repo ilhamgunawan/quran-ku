@@ -14,7 +14,7 @@ const Header = ({ pageTitle }: HeaderProps) => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-teal-400 shadow-xl">
-      <nav className="relative mx-auto flex items-center justify-between p-2 md:w-[64rem] md:px-4">
+      <nav className="relative mx-auto flex items-center justify-between p-2 md:max-w-[64rem] md:px-4">
         <LeftButton pageTitle={pageTitle} />
         <h1 className="py-2 text-center text-xl font-bold text-white">
           {pageTitle}
