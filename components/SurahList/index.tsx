@@ -1,33 +1,19 @@
-import type { ChangeEvent } from 'react';
-import { useState } from 'react';
+import { shallow } from 'zustand/shallow';
 
 import SurahItem from '@/components/SurahItem';
 import { useSurahStore } from '@/stores/surah';
-import type { ISurah, TSurahLinkPrefix } from '@/types/surah';
+import type { TSurahLinkPrefix } from '@/types/surah';
 
 interface SurahListProps {
   surahLinkPrefix: TSurahLinkPrefix;
 }
 
 const SurahList = ({ surahLinkPrefix }: SurahListProps) => {
-  const surahAll = useSurahStore((state) => state.surahAll);
-  const [filteredSurahList, setFilteredSurahList] = useState<ISurah[]>(
-    surahAll || []
+  const { filteredSurah, onSearchInputChanged } = useSurahStore(
+    (state) => state,
+    shallow
   );
-  const isSearchResultEmpty = filteredSurahList.length === 0;
-
-  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchValueLoweredCase = event.target.value.toLowerCase().trim();
-
-    if (surahAll) {
-      const filteredSearch = surahAll.filter(({ nama }) => {
-        const surahNameLoweredCase = nama.toLowerCase().trim();
-        return surahNameLoweredCase.match(searchValueLoweredCase);
-      });
-
-      setFilteredSurahList(filteredSearch);
-    }
-  };
+  const isSearchResultEmpty = filteredSurah.length === 0;
 
   return (
     <main className="mx-auto my-16 w-11/12 md:max-w-[64rem] md:px-4">
@@ -35,7 +21,7 @@ const SurahList = ({ surahLinkPrefix }: SurahListProps) => {
         type="search"
         placeholder="Pencarian surat, contoh: Al Fatihah"
         className="my-2 h-16 w-full rounded border-2 border-teal-400 p-4 outline-none"
-        onChange={onInputChange}
+        onChange={(e) => onSearchInputChanged(e.target.value)}
       />
       {isSearchResultEmpty ? (
         <p className="text-center font-semibold text-gray-700">
@@ -43,7 +29,7 @@ const SurahList = ({ surahLinkPrefix }: SurahListProps) => {
         </p>
       ) : (
         <ul className="flex w-full flex-col items-center">
-          {filteredSurahList.map((surah) => (
+          {filteredSurah.map((surah) => (
             <SurahItem
               key={surah.nomor}
               surah={surah}

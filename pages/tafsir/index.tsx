@@ -32,13 +32,22 @@ interface TafsirListPageProps {
 }
 
 const TafsirListPage = (props: TafsirListPageProps) => {
-  const { surahAll, setSurahAll } = useSurahStore((state) => state, shallow);
+  const { setSurahAll, initFilteredSurah } = useSurahStore(
+    (state) => state,
+    shallow
+  );
+  const isMounted = React.useRef(true);
 
   React.useEffect(() => {
-    if (!surahAll) {
+    if (isMounted.current) {
       setSurahAll(props.surahAll);
+      initFilteredSurah(props.surahAll);
     }
-  }, [props.surahAll, surahAll]);
+
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   return (
     <>
