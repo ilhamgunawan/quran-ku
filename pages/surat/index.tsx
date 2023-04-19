@@ -1,33 +1,54 @@
+import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import { shallow } from 'zustand/shallow';
 
-import Header from '../../components/header/Header';
-import SurahList from '../../components/surah-list/SurahList';
-import { getSurahList } from '../../data-sources/data-sources';
-import type { SurahItem } from '../../types/surah';
+import { getSurahAll } from '@/api/surah';
+import Header from '@/components/header/Header';
+import SurahList from '@/components/SurahList';
+import { useSurahStore } from '@/stores/surah';
+import type { ISurah } from '@/types/surah';
 
-export type Props = {
-  surahList: SurahItem[];
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const res = await getSurahAll();
+    return {
+      props: {
+        surahAll: res.data,
+      },
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      props: {
+        surahAll: [],
+      },
+    };
+  }
 };
 
-export const getStaticProps = async () => {
-  const surahList = await getSurahList();
+interface SurahListPageProps {
+  surahAll: ISurah[];
+}
 
-  return {
-    props: {
-      surahList,
-    },
-  };
-};
+const SurahListPage = (props: SurahListPageProps) => {
+  const { surahAll, setSurahAll } = useSurahStore((state) => state, shallow);
 
-export default function SuratListPage(props: Props) {
+  React.useEffect(() => {
+    if (!surahAll) {
+      setSurahAll(props.surahAll);
+    }
+  }, [props.surahAll, surahAll]);
+
   return (
     <>
       <Head>
         <title>{"Baca Al-Qur'an | Qur'anKu"}</title>
       </Head>
       <Header pageTitle="Qur'anKu | Daftar Surat" />
-      <SurahList surahList={props.surahList} surahItemLinkPrefix="surat" />
+      <SurahList surahLinkPrefix="surat" />
     </>
   );
-}
+};
+
+export default SurahListPage;

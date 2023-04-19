@@ -11,7 +11,7 @@ export type SurahItem = {
   urut: string;
 };
 
-export interface Surah {
+export interface ISurah {
   arti: string;
   asma: string;
   audio: string;
@@ -23,3 +23,5 @@ export interface Surah {
   type: string;
   urut: string;
 }
+
+export type TSurahLinkPrefix = 'surat' | 'tafsir';
