@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
-import type { ISurah } from '@/types/surah';
+import type { ISurah, ISurahMetaData } from '@/types/surah';
 
 interface SurahState {
   surahAll: ISurah[] | null;
@@ -9,6 +9,7 @@ interface SurahState {
   setSurahAll: (surahAll: ISurah[]) => void;
   initFilteredSurah: (surahAll: ISurah[]) => void;
   onSearchInputChanged: (keyword: string) => void;
+  getSurahMetaData: (currentSurahNumber: string) => ISurahMetaData;
 }
 
 export const useSurahStore = create<SurahState>()(
@@ -35,6 +36,16 @@ export const useSurahStore = create<SurahState>()(
 
             set({ filteredSurah: filteredSearch });
           }
+        },
+        getSurahMetaData: (currentSurahNumber) => {
+          const current = parseInt(currentSurahNumber, 10);
+          const { surahAll } = get();
+          return {
+            nextSurahName: surahAll?.[current]?.nama || undefined,
+            nextSurahNumber: surahAll?.[current]?.nomor || undefined,
+            previourSurahName: surahAll?.[current - 2]?.nama || undefined,
+            previousSurahNumber: surahAll?.[current - 2]?.nomor || undefined,
+          };
         },
       }),
       {
