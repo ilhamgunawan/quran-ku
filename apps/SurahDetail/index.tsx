@@ -105,6 +105,7 @@ const SurahDetail = ({ surahData, murottalUrl }: SurahDetailProps) => {
         nextId={nextSurahNumber || null}
         previousName={previourSurahName || null}
         previousId={previousSurahNumber || null}
+        mode="surah"
       />
     </>
   );
