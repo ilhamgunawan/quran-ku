@@ -38,9 +38,12 @@ const SurahDetail = ({ surahData, murottalUrl }: SurahDetailProps) => {
   const dispatch = useContext(DispatchContext);
   const { currentMurottal, isMurottalPlaying } = state;
 
-  const { text, translations, name_latin, number_of_ayah, number } = surahData;
+  const { text, translations, name_latin, number_of_ayah, number, tafsir } =
+    surahData;
 
-  const versesArray = mapAyatObjectToArray(text, translations.id.text);
+  const tafsirSourse = `${tafsir.id.kemenag.source} (${tafsir.id.kemenag.name})`;
+
+  const versesArray = mapAyatObjectToArray(text, translations.id.text, tafsir);
 
   const setAyatList = (verses: any) => {
     dispatch(setCurrentAyatNumberList(getAyatNumberList(verses)));
@@ -94,6 +97,7 @@ const SurahDetail = ({ surahData, murottalUrl }: SurahDetailProps) => {
               key={`${name_latin}-${ayat.ayatNumber}`}
               surahId={surahData.number}
               surahName={name_latin}
+              tafsirSource={tafsirSourse}
               {...ayat}
             />
           ))}

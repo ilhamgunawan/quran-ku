@@ -1,3 +1,5 @@
+import type { TTafsir } from '@/types/surah';
+
 /* eslint-disable no-plusplus */
 export const getArabicNumber = (number: string | any[]) => {
   let charIndex = 0;
@@ -62,13 +64,15 @@ export const getArabicNumber = (number: string | any[]) => {
 
 export const mapAyatObjectToArray = (
   arabic: { [s: string]: unknown } | ArrayLike<unknown>,
-  translations: { [s: string]: unknown } | ArrayLike<unknown>
+  translations: { [s: string]: unknown } | ArrayLike<unknown>,
+  tafsirs: TTafsir
 ) => {
   return Object.entries(arabic).map((arabicText, index) => {
     return {
       ayatNumber: arabicText[0],
       arabic: (arabicText[1] as string).replace(/[0-9]/g, ''),
       translations: Object.entries(translations)?.[index]?.[1] as string,
+      tafsir: tafsirs.id.kemenag.text[index] || '',
     };
   });
 };
