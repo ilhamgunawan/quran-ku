@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 interface SurahDetailPageProps {
   surahData: ISurahDetail;
-  murottalUrl: any;
+  murottalUrl: string;
 }
 
 const SurahDetailPage = ({ surahData, murottalUrl }: SurahDetailPageProps) => {

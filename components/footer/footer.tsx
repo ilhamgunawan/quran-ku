@@ -41,7 +41,7 @@ const Footer = ({
 
   return (
     <footer className="fixed inset-x-0 bottom-0 flex w-full bg-gray-900">
-      <div className="footer-buttons flex w-full">
+      <div className="mx-auto flex w-full md:max-w-[64rem]">
         {previousId ? (
           <Link href={`/surat/${previousId}`}>
             <button className="flex w-full flex-col items-center bg-gray-900 p-1 focus:outline-none">

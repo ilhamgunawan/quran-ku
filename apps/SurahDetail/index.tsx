@@ -19,7 +19,7 @@ import { getAyatNumberList, mapAyatObjectToArray } from '../../utils/utils';
 
 interface SurahDetailProps {
   surahData: ISurahDetail;
-  murottalUrl: any;
+  murottalUrl: string;
 }
 
 const SurahDetail = ({ surahData, murottalUrl }: SurahDetailProps) => {
@@ -38,7 +38,7 @@ const SurahDetail = ({ surahData, murottalUrl }: SurahDetailProps) => {
   const dispatch = useContext(DispatchContext);
   const { currentMurottal, isMurottalPlaying } = state;
 
-  const { text, translations, name_latin, number_of_ayah } = surahData;
+  const { text, translations, name_latin, number_of_ayah, number } = surahData;
 
   const versesArray = mapAyatObjectToArray(text, translations.id.text);
 
@@ -74,19 +74,21 @@ const SurahDetail = ({ surahData, murottalUrl }: SurahDetailProps) => {
         }
       />
       <main className="mx-auto my-16 w-11/12 md:max-w-[64rem] md:px-4">
-        <ul>
-          <li className="mb-5 border-b pb-3">
-            <div className="flex flex-col">
-              <div className="grid">
-                <p className="arabic-text col-start-2 ml-auto mr-0 text-right">
-                  بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+        <ul className="pb-12">
+          {number !== '1' ? (
+            <li className="mb-5 border-b pb-3">
+              <div className="flex flex-col">
+                <div className="grid">
+                  <p className="arabic-text col-start-2 ml-auto mr-0 text-right">
+                    بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+                  </p>
+                </div>
+                <p className="mt-10 text-justify leading-relaxed text-gray-700">
+                  Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.
                 </p>
               </div>
-              <p className="mt-10 text-justify leading-relaxed text-gray-700">
-                Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.
-              </p>
-            </div>
-          </li>
+            </li>
+          ) : null}
           {versesArray.map((ayat) => (
             <AyatListItem
               key={`${name_latin}-${ayat.ayatNumber}`}
@@ -104,21 +106,6 @@ const SurahDetail = ({ surahData, murottalUrl }: SurahDetailProps) => {
         previousName={previourSurahName || null}
         previousId={previousSurahNumber || null}
       />
-      {/* {number ? (
-        <Footer
-          previousId={(parseInt(number, 10) - 1).toString()}
-          nextId={(parseInt(number, 10) + 1).toString()}
-          previousName={previousName}
-          nextName={nextName}
-        />
-      ) : (
-        <Footer
-          previousId={null}
-          nextId={null}
-          previousName="Loading"
-          nextName="Loading"
-        />
-      )} */}
     </>
   );
 };

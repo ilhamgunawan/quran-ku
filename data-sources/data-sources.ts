@@ -45,11 +45,8 @@ export const getMurottalAllUrl = async (surahId: any) => {
 
 export const getAllSurahId = async () => {
   const surahList = await getSurahList();
-  const filteredUnusedId = surahList.filter((surah: { nomor: string }) => {
-    return surah.nomor !== '1' && surah.nomor !== '114';
-  });
 
-  return filteredUnusedId.map((surah: { nomor: any }) => {
+  return surahList.map((surah: { nomor: any }) => {
     return {
       params: {
         id: surah.nomor,
