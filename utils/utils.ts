@@ -72,7 +72,7 @@ export const mapAyatObjectToArray = (
       ayatNumber: arabicText[0],
       arabic: (arabicText[1] as string).replace(/[0-9]/g, ''),
       translations: Object.entries(translations)?.[index]?.[1] as string,
-      tafsir: tafsirs.id.kemenag.text[index] || '',
+      tafsir: tafsirs.id.kemenag.text[index + 1] || '',
     };
   });
 };
