@@ -44,10 +44,7 @@ const MurottalList = () => {
   return isLoading ? (
     <LoadingSpinner />
   ) : (
-    <main
-      style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }}
-      className="mb-32 mt-16"
-    >
+    <main className="mx-auto mb-32 mt-16 w-11/12 px-2 pb-28 md:max-w-[64rem] md:px-4">
       <input
         type="search"
         placeholder="Pencarian murottal, contoh: Al Fatihah"

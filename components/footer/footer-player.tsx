@@ -18,7 +18,7 @@ const FooterPlayer = () => {
         </title>
       </Head>
       <footer className="fixed inset-x-0 bottom-0 flex w-full bg-gray-900">
-        <div className="footer-player w-full flex-col">
+        <div className="mx-auto w-full flex-col md:max-w-[64rem]">
           <p className="my-2 text-center font-semibold text-white">
             {surah
               ? `${reciter} - ${surah}`
