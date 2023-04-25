@@ -80,10 +80,10 @@ const TafsirDetail = ({ surahId, tafsir, name, source }: TafsirDetailProps) => {
       </Head>
       <Header pageTitle={`Tafsir Surat ${name}`} />
       <main className="mx-auto my-16 w-11/12 py-4 md:max-w-[64rem] md:px-4">
-        <section className="mb-4 rounded-lg bg-orange-200 p-4">
+        <section className="mb-4 rounded-lg bg-orange-100 p-4">
           <p className="leading-loose text-yellow-800">
-            <strong>Catatan</strong>: Tafsir Quran Surat {name} berdasarkan
-            sumber dari {source}
+            <strong>Catatan</strong>: Tafsir Quran Surat {name}
+            bersumber dari {source}
           </p>
         </section>
         <ul className="pb-12">
