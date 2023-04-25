@@ -1,19 +1,13 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
 
-import { getAllAyat } from '../../bookmark-utils/bookmark-utils';
+import { useBookmarkStore } from '@/stores/bookmark';
+
 import BookmarkEmpty from '../../components/bookmark/bookmark-empty';
 import BookmarkItem from '../../components/bookmark/bookmark-item';
 import Header from '../../components/header/Header';
 
-const Penanda = () => {
-  const [isBookmarkExist, setBookmarkExist] = useState(false);
-
-  useEffect(() => {
-    if (getAllAyat().length > 0) {
-      setBookmarkExist(true);
-    }
-  });
+const PenandaPage = () => {
+  const bookmarkList = useBookmarkStore((state) => state.bookmarkList);
 
   return (
     <>
@@ -21,13 +15,10 @@ const Penanda = () => {
         <title>{"Daftar Penanda | Qur'anKu"}</title>
       </Head>
       <Header pageTitle="Qur'anKu | Penanda" />
-      <main
-        style={{ width: '95%', margin: '5rem auto' }}
-        className="flex flex-col items-center"
-      >
-        {isBookmarkExist ? (
+      <main className="mx-auto my-20 flex w-11/12 flex-col items-center">
+        {bookmarkList.length > 0 ? (
           <ul>
-            {getAllAyat().map((ayat) => (
+            {bookmarkList.map((ayat) => (
               <BookmarkItem key={ayat.id} {...ayat} />
             ))}
           </ul>
@@ -39,4 +30,4 @@ const Penanda = () => {
   );
 };
 
-export default Penanda;
+export default PenandaPage;

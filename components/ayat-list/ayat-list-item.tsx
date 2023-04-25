@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
+import { useBookmarkStore } from '@/stores/bookmark';
+
 import BookmarkBorderIcon from '../../assets/icons/bookmark-border-icon';
 import BookmarkIcon from '../../assets/icons/bookmark-icon';
-import {
-  getAyat,
-  removeAyat,
-  storeAyat,
-} from '../../bookmark-utils/bookmark-utils';
 import { getArabicNumber, getDateInIndonesia } from '../../utils/utils';
 
 interface AyatListItemProps {
-  surahName: any;
-  surahId: any;
-  ayatNumber: any;
-  arabic: any;
-  translations: any;
+  surahName: string;
+  surahId: string;
+  ayatNumber: string;
+  arabic: string;
+  translations: string;
 }
 
 const AyatListItem = ({
@@ -31,20 +28,20 @@ const AyatListItem = ({
     display: false,
   });
 
-  const [ayatKey] = useState(`${surahName}-${ayatNumber}`);
+  const { saveAyat, removeAyatById, getAyatById } = useBookmarkStore();
+
+  const ayatKey = `${surahName}-${ayatNumber}`;
 
   const onClickStoreAyat = () => {
-    storeAyat(ayatKey, {
+    saveAyat({
       id: ayatKey,
-      date: getDateInIndonesia(),
       surahName,
       ayatNumber,
+      renderDate: getDateInIndonesia(),
+      createdAt: new Date().toISOString(),
       url: `/surat/${surahId}#${ayatNumber}`,
     });
     setAyatBookmarked(true);
-
-    // eslint-disable-next-line no-console
-    console.log(getAyat(ayatKey));
 
     setBookmarkNotif({
       message: 'Ayat disimpan di penanda',
@@ -60,11 +57,8 @@ const AyatListItem = ({
   };
 
   const onClickRemoveAyat = () => {
-    removeAyat(ayatKey);
+    removeAyatById(ayatKey);
     setAyatBookmarked(false);
-
-    // eslint-disable-next-line no-console
-    console.log(getAyat(ayatKey));
 
     setBookmarkNotif({
       message: 'Ayat dihapus dari penanda',
@@ -80,7 +74,7 @@ const AyatListItem = ({
   };
 
   useEffect(() => {
-    if (getAyat(ayatKey)) {
+    if (getAyatById(ayatKey)) {
       setAyatBookmarked(true);
     }
   }, []);
@@ -90,10 +84,7 @@ const AyatListItem = ({
       <a id={ayatNumber} className="anchor"></a>
       <div className="flex flex-col">
         <div className="grid">
-          <p
-            style={{ color: 'white' }}
-            className="arabic-text col-start-1 mb-6 mt-auto flex h-10 w-10 items-center justify-center rounded-full bg-blue-300 text-2xl leading-none text-white"
-          >
+          <p className="arabic-text col-start-1 mb-6 mt-auto flex h-10 w-10 items-center justify-center rounded-full bg-blue-300 text-2xl leading-none !text-white">
             {getArabicNumber(ayatNumber)}
           </p>
           <p

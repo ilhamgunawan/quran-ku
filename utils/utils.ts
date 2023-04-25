@@ -68,7 +68,7 @@ export const mapAyatObjectToArray = (
     return {
       ayatNumber: arabicText[0],
       arabic: (arabicText[1] as string).replace(/[0-9]/g, ''),
-      translations: Object.entries(translations)?.[index]?.[1],
+      translations: Object.entries(translations)?.[index]?.[1] as string,
     };
   });
 };
