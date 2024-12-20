@@ -27,4 +27,4 @@ or
 $ yarn start
 ```
 
-Open http://localhost:3000 in your local machine
+Open http://localhost:3000 on your local machine
