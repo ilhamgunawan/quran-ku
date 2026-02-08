@@ -1,3 +1,7 @@
+/**
+ * @see https://developers.google.com/tag-manager/quickstart
+ */
+
 import GoogleTagManagerNoScript from './GoogleTagManagerNoScript';
 import GoogleTagManagerScript from './GoogleTagManagerScript';
 
